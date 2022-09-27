@@ -2,6 +2,7 @@ import React from "react";
 import "./BlogMain.scss";
 
 import Article from "../../common/Article/Article";
+import Pagination from "../Pagination/Pagination";
 
 const tempData = {
   heading: "Test",
@@ -91,12 +92,7 @@ const BlogMain = () => {
               />
             </li>
           </ul>
-          <ul className="">
-            <li className="blog__item"></li>
-            <li className="blog__item"></li>
-            <li className="blog__item"></li>
-            <li className="blog__item"></li>
-          </ul>
+          <Pagination />
         </div>
       </div>
     </main>
