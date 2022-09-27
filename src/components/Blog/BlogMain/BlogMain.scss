@@ -1,0 +1,31 @@
+@use "../../../assets/scss/variables.scss" as *;
+
+.blog {
+  background-color: $color-background-secondary;
+
+  &__container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  &__wrapper {
+    margin: 0 8px;
+
+    background-color: $color-background-primary;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 10%;
+    gap: 28px;
+
+    margin: 0;
+    padding: 1.5rem;
+    list-style: none;
+  }
+
+  &__item {
+    min-height: 263px;
+  }
+}
