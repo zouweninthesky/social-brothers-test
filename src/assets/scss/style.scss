@@ -1,32 +1,41 @@
 @use "./variables.scss" as *;
 @use "./mixins.scss" as *;
 
-// @font-face {
-//   font-family: "Inter";
-//   font-style: normal;
-//   font-weight: 400;
-//   src: local("Inter"),
-//     url("../../static/fonts/Inter-Regular.woff2") format("woff2"),
-//     url("../../static/fonts/Inter-Regular.woff") format("woff");
-// }
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  src: local("Montserrat"),
+    url("../../static/fonts/Montserrat-Regular.woff2") format("woff2"),
+    url("../../static/fonts/Montserrat-Regular.woff") format("woff");
+}
 
-// @font-face {
-//   font-family: "Inter";
-//   font-style: normal;
-//   font-weight: 500;
-//   src: local("Inter"),
-//     url("../../static/fonts/Inter-Medium.woff2") format("woff2"),
-//     url("../../static/fonts/Inter-Medium.woff") format("woff");
-// }
+@font-face {
+  font-family: "Montserrat";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Montserrat"),
+    url("../../static/fonts/Montserrat-Italic.woff2") format("woff2"),
+    url("../../static/fonts/Montserrat-Italic.woff") format("woff");
+}
 
-// @font-face {
-//   font-family: "Inter";
-//   font-style: normal;
-//   font-weight: 700;
-//   src: local("Inter"),
-//     url("../../static/fonts/Inter-Bold.woff2") format("woff2"),
-//     url("../../static/fonts/Inter-Bold.woff") format("woff");
-// }
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  src: local("Montserrat"),
+    url("../../static/fonts/Montserrat-SemiBold.woff2") format("woff2"),
+    url("../../static/fonts/Montserrat-SemiBold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Montserrat"),
+    url("../../static/fonts/Montserrat-Bold.woff2") format("woff2"),
+    url("../../static/fonts/Montserrat-Bold.woff") format("woff");
+}
 
 *,
 *::before,
@@ -39,7 +48,7 @@ body {
   /* height: 100%; */
   color: $color-font-primary;
   font-style: normal;
-  // font-family: "Inter", "Arial", sans-serif;
+  font-family: "Montserrat", "Arial", sans-serif;
   font-weight: 400;
 
   background-color: $color-background-primary;
