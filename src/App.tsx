@@ -2,7 +2,11 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+import GetService from './api/GetService';
+
 function App() {
+
+  const test = GetService.getPosts(1, 10);
   return (
     <div className="App">
       <header className="App-header">
