@@ -1,15 +1,18 @@
-import React from 'react';
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Blog from "./components/Blog/Blog";
 
-import GetService from './api/GetService';
+// import GetService from './api/GetService';
 
 function App() {
-
-  const test = GetService.getPosts(1, 10);
   return (
-    <div className="App">
-      <header className="App-header">
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/blog" element={<Blog />} />
+      </Routes>
+    </>
   );
 }
 
