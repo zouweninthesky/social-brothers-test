@@ -6,7 +6,7 @@ const tempData = {
   heading: "Test",
   content:
     "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-  date: 22222222222,
+  date: "22222222222",
   category: "Category",
   imgUrl: "",
 };

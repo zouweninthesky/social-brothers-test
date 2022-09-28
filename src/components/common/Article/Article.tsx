@@ -4,7 +4,7 @@ import "./Article.scss";
 interface ArticlePr {
   heading: string;
   content: string;
-  date: number;
+  date: string;
   category: string;
   imgUrl: string;
 }

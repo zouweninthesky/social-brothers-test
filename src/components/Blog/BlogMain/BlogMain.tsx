@@ -1,102 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 import "./BlogMain.scss";
 
 import Article from "../../common/Article/Article";
 import Pagination from "../Pagination/Pagination";
 
-const tempData = {
-  heading: "Test",
-  content:
-    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-  date: 22222222222,
-  category: "Category",
-  imgUrl: "",
-};
+import BlogStore from "../../../store/blogStore";
 
-const BlogMain = () => {
+const BlogMain = observer(() => {
+  const { articles } = BlogStore;
+
+  useEffect(() => {
+    (async () => {
+      BlogStore.blogArticlesLoad();
+    })();
+  }, []);
+
+  const content = () => {
+    if (articles) {
+      if (articles.length !== 0) {
+        const articleItems = articles.map((art, i) => {
+          return (
+            <li className="blog__item" key={art.id}>
+              <Article
+                heading={art.title}
+                content={art.content}
+                date={art.created_at}
+                category={art.category.name}
+                imgUrl={art.img_url}
+              />
+            </li>
+          );
+        });
+        return articleItems;
+      }
+    }
+  };
+
   return (
     <main className="blog">
       <div className="blog__container container">
         <div className="blog__wrapper">
-          <ul className="blog__list">
-            <li className="blog__item">
-              <Article
-                heading={tempData.heading}
-                content={tempData.content}
-                date={tempData.date}
-                category={tempData.category}
-                imgUrl={tempData.imgUrl}
-              />
-            </li>
-            <li className="blog__item">
-              <Article
-                heading={tempData.heading}
-                content={tempData.content}
-                date={tempData.date}
-                category={tempData.category}
-                imgUrl={tempData.imgUrl}
-              />
-            </li>
-            <li className="blog__item">
-              <Article
-                heading={tempData.heading}
-                content={tempData.content}
-                date={tempData.date}
-                category={tempData.category}
-                imgUrl={tempData.imgUrl}
-              />
-            </li>
-            <li className="blog__item">
-              <Article
-                heading={tempData.heading}
-                content={tempData.content}
-                date={tempData.date}
-                category={tempData.category}
-                imgUrl={tempData.imgUrl}
-              />
-            </li>
-            <li className="blog__item">
-              <Article
-                heading={tempData.heading}
-                content={tempData.content}
-                date={tempData.date}
-                category={tempData.category}
-                imgUrl={tempData.imgUrl}
-              />
-            </li>
-            <li className="blog__item">
-              <Article
-                heading={tempData.heading}
-                content={tempData.content}
-                date={tempData.date}
-                category={tempData.category}
-                imgUrl={tempData.imgUrl}
-              />
-            </li>
-            <li className="blog__item">
-              <Article
-                heading={tempData.heading}
-                content={tempData.content}
-                date={tempData.date}
-                category={tempData.category}
-                imgUrl={tempData.imgUrl}
-              />
-            </li>
-            <li className="blog__item">
-              <Article
-                heading={tempData.heading}
-                content={tempData.content}
-                date={tempData.date}
-                category={tempData.category}
-                imgUrl={tempData.imgUrl}
-              />
-            </li>
-          </ul>
+          <ul className="blog__list">{content()}</ul>
           <Pagination />
         </div>
       </div>
     </main>
   );
-};
+});
 
 export default BlogMain;
