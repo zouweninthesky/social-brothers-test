@@ -1,0 +1,21 @@
+@use "../../assets/scss/variables.scss" as *;
+
+.home {
+  background-color: $color-background-secondary;
+
+  &__container {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.25rem;
+
+    margin: 0 8px;
+    padding: 1.5rem;
+
+    // background-color: $color-background-primary;
+  }
+}

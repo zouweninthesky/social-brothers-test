@@ -1,0 +1,21 @@
+@use "../../../assets/scss/variables.scss" as *;
+
+.home-blog {
+  background-color: $color-background-primary;
+
+  &__list {
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 25px;
+
+    list-style: none;
+    padding: 1.5rem;
+    margin: 0;
+  }
+
+  &__item {
+    min-height: 263px;
+  }
+}

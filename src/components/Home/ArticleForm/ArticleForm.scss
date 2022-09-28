@@ -1,0 +1,13 @@
+@use "../../../assets/scss/variables.scss" as *;
+
+.article-form {
+  padding: 1.5rem;
+
+  background-color: $color-background-primary;
+
+  &__header {
+    font-size: 1.5rem;
+
+    margin-top: 0;
+  }
+}
