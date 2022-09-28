@@ -1,0 +1,11 @@
+@use "../../../assets/scss/variables.scss" as *;
+
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: $color-background-primary;
+
+  padding: 0.5rem 0;
+
+  background-color: $color-font-primary;
+}
