@@ -18,6 +18,13 @@ const Article: FC<ArticlePr> = ({
   category,
   imgUrl,
 }) => {
+  const contentText = () => {
+    if (!content.includes(" "))
+      return content.length > 24 ? `${content.slice(0, 22)}...` : content;
+    if (content.length > 70) return `${content.slice(0, 70)}...`;
+    return "content";
+  };
+
   return (
     <article className="article">
       <div className="article__header">
@@ -33,14 +40,10 @@ const Article: FC<ArticlePr> = ({
         <h3 className="article__heading">
           {heading.length > 9 ? `${heading.slice(0, 9)}...` : heading}
         </h3>
-        <p className="article__content">
-          {content.length > 70 ? `${content.slice(0, 70)}...` : content}
-        </p>
+        <p className="article__content">{contentText()}</p>
       </div>
     </article>
   );
 };
-
-// `${content.slice(0, 98)}...`
 
 export default Article;

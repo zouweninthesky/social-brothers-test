@@ -2,10 +2,11 @@ import React, { useEffect } from "react";
 import Article from "../../common/Article/Article";
 import BlogStore from "../../../store/blogStore";
 import { observer } from "mobx-react-lite";
+import Button from "../../common/Button/Button";
 import "./HomeBlog.scss";
 
 const HomeBlog = observer(() => {
-  const { articles } = BlogStore;
+  const { currentPage, articles } = BlogStore;
 
   useEffect(() => {
     (async () => {
@@ -33,9 +34,15 @@ const HomeBlog = observer(() => {
     }
   };
 
+  const onClick = () => {
+    BlogStore.currentPageSet(currentPage + 1);
+    BlogStore.articlesLoad(true);
+  };
+
   return (
     <section className="home-blog">
       <ul className="home-blog__list">{content()}</ul>
+      <Button title="Meer laden" onClick={onClick} />
     </section>
   );
 });
