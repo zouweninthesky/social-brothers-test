@@ -31,10 +31,14 @@ const Article: FC<ArticlePr> = ({
       </div>
       <div className="article__body">
         <h3 className="article__heading">{heading}</h3>
-        <p className="article__content">{content}</p>
+        <p className="article__content">
+          {content.length > 98 ? `${content.slice(0, 98)}...` : content}
+        </p>
       </div>
     </article>
   );
 };
+
+// `${content.slice(0, 98)}...`
 
 export default Article;
