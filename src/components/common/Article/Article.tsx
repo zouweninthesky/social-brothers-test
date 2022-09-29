@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import "./Article.scss";
 
+import { MAIN_API_URL } from "../../../utils/links";
+
 interface ArticlePr {
   heading: string;
   content: string;
@@ -19,7 +21,11 @@ const Article: FC<ArticlePr> = ({
   return (
     <article className="article">
       <div className="article__header">
-        <img className="article__img" src={imgUrl} alt="" />
+        <img
+          className="article__img"
+          src={`${MAIN_API_URL}storage/${imgUrl}`}
+          alt=""
+        />
         <p className="article__header-info">{date}</p>
         <p className="article__header-info">{category}</p>
       </div>

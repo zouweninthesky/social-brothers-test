@@ -42,8 +42,8 @@ class BlogStore {
     );
 
     this.articlesSet(response.data);
-    // this.totalPagesSet(response.last_page);
-    this.totalPagesSet(9);
+    this.totalPagesSet(response.last_page);
+    // this.totalPagesSet(9);
     Store.loadingFinished();
   }
 }
