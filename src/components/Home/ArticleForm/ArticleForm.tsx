@@ -1,4 +1,7 @@
 import React from "react";
+
+import TextInput from "../../common/inputs/TextInput/TextInput";
+import Dropdown from "../../common/inputs/Dropdown/Dropdown";
 import "./ArticleForm.scss";
 
 const ArticleForm = () => {
@@ -6,14 +9,15 @@ const ArticleForm = () => {
     <section className="article-form">
       <h3 className="article-form__header">Plaats een blog bericht</h3>
       <form action="" className="article-form__form">
-        <div>
-          <label htmlFor="form-header">Berichtnaam</label>
-          <input id="form-header" type="text" />
-        </div>
-        <div>
-          <label htmlFor="form-category">Categorie</label>
-          <input id="form-category" type="text" />
-        </div>
+        <TextInput label="Berichtnaam" placeholder="Geen titel" />
+        <Dropdown
+          label="Categorie"
+          options={[
+            { name: "", dutchName: "Geen categorie" },
+            { name: "Tech", dutchName: "Tech" },
+            { name: "Medicine", dutchName: "Medicine" },
+          ]}
+        />
         <div>
           <label htmlFor="form-img">Header afdbeelding</label>
           <input id="form-img" type="file" onChange={() => {}} />

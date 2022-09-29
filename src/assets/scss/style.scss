@@ -78,6 +78,125 @@ a {
   clip: rect(0 0 0 0);
 }
 
+.input {
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+
+  margin-bottom: 24px;
+
+  & label {
+    color: $color-font-secondary;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__wrapper {
+    width: 100%;
+    height: 40px;
+
+    background-color: $color-background-quaternary;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 64px;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+  }
+
+  &__dropdown-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__dropdown-item {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+
+      background-color: $color-background-tertiary;
+    }
+  }
+
+  & input,
+  &__dropdown-option {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    color: $color-font-primary;
+    text-align: left;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 0.5rem;
+
+    border: 0;
+    background-color: transparent;
+
+    cursor: pointer;
+
+    &::placeholder {
+      color: $color-font-quaternary;
+      font-style: italic;
+    }
+  }
+
+  &__dropdown-option {
+    position: relative;
+
+    &--chosen {
+      cursor: default;
+    }
+
+    &--chosen,
+    &--empty {
+      color: $color-font-quaternary;
+    }
+
+    &--with-arrow::after,
+    &--with-arrow::before {
+      content: "";
+      position: absolute;
+
+      right: 20px;
+      top: 20px;
+
+      width: 8px;
+      height: 2px;
+      transform: rotate(45deg);
+      background-color: $color-arrow;
+    }
+
+    &--with-arrow::after {
+      transform: rotate(-45deg);
+      right: 15px;
+    }
+
+    &--with-arrow-rotated::before {
+      transform: rotate(-45deg);
+    }
+
+    &--with-arrow-rotated::after {
+      transform: rotate(45deg);
+    }
+
+    &--empty {
+      font-style: italic;
+    }
+  }
+}
+
 .container {
   width: 100%;
   max-width: 1440px;
