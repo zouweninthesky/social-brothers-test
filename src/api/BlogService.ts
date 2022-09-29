@@ -15,7 +15,6 @@ class BlogService {
       }
     );
     const data: BlogArticlesResponseInt = await response.json();
-    console.log(data);
 
     return data;
   }

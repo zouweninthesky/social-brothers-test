@@ -19,7 +19,16 @@
   }
 
   &__link {
-    &--current {
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+
+    padding: 0;
+
+    background-color: transparent;
+    border: 0;
+
+    &--active {
       display: flex;
       justify-content: center;
       align-items: center;

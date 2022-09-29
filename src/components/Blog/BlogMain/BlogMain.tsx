@@ -17,23 +17,22 @@ const BlogMain = observer(() => {
   }, []);
 
   const content = () => {
-    if (articles) {
-      if (articles.length !== 0) {
-        const articleItems = articles.map((art, i) => {
-          return (
-            <li className="blog__item" key={art.id}>
-              <Article
-                heading={art.title}
-                content={art.content}
-                date={art.created_at}
-                category={art.category.name}
-                imgUrl={art.img_url}
-              />
-            </li>
-          );
-        });
-        return articleItems;
-      }
+    if (!articles) return <></>;
+    if (articles!.length !== 0) {
+      const articleItems = articles!.map((art, i) => {
+        return (
+          <li className="blog__item" key={art.id}>
+            <Article
+              heading={art.title}
+              content={art.content}
+              date={art.created_at}
+              category={art.category.name}
+              imgUrl={art.img_url}
+            />
+          </li>
+        );
+      });
+      return articleItems;
     }
   };
 

@@ -10,6 +10,7 @@ import Store from "./index";
 
 class BlogStore {
   currentPage = 1;
+  totalPages = 1;
   articles: null | BlogArticleInt[] = null;
 
   constructor() {
@@ -25,6 +26,14 @@ class BlogStore {
     this.articles = [...data];
   }
 
+  currentPageSet(pageNumber: number) {
+    this.currentPage = pageNumber;
+  }
+
+  totalPagesSet(number: number) {
+    this.totalPages = number;
+  }
+
   async blogArticlesLoad() {
     Store.loadingStarted();
     const response = await BlogService.getPosts(
@@ -33,6 +42,8 @@ class BlogStore {
     );
 
     this.articlesSet(response.data);
+    // this.totalPagesSet(response.last_page);
+    this.totalPagesSet(9);
     Store.loadingFinished();
   }
 }
