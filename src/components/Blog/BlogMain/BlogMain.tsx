@@ -12,7 +12,7 @@ const BlogMain = observer(() => {
 
   useEffect(() => {
     (async () => {
-      BlogStore.blogArticlesLoad();
+      BlogStore.articlesLoad();
     })();
   }, []);
 

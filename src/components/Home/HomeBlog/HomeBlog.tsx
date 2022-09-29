@@ -1,59 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Article from "../../common/Article/Article";
+import BlogStore from "../../../store/blogStore";
+import { observer } from "mobx-react-lite";
 import "./HomeBlog.scss";
 
-const tempData = {
-  heading: "Test",
-  content:
-    "Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum",
-  date: "22222222222",
-  category: "Category",
-  imgUrl: "",
-};
+const HomeBlog = observer(() => {
+  const { articles } = BlogStore;
 
-const HomeBlog = () => {
+  useEffect(() => {
+    (async () => {
+      BlogStore.articlesLoad(true);
+    })();
+  }, []);
+
+  const content = () => {
+    if (!articles) return <></>;
+    if (articles!.length !== 0) {
+      const articleItems = articles!.map((art, i) => {
+        return (
+          <li className="blog__item" key={art.id}>
+            <Article
+              heading={art.title}
+              content={art.content}
+              date={art.created_at}
+              category={art.category.name}
+              imgUrl={art.img_url}
+            />
+          </li>
+        );
+      });
+      return articleItems;
+    }
+  };
+
   return (
     <section className="home-blog">
-      <ul className="home-blog__list">
-        <li className="home-blog__item">
-          <Article
-            heading={tempData.heading}
-            content={tempData.content}
-            date={tempData.date}
-            category={tempData.category}
-            imgUrl={tempData.imgUrl}
-          />
-        </li>
-        <li className="home-blog__item">
-          <Article
-            heading={tempData.heading}
-            content={tempData.content}
-            date={tempData.date}
-            category={tempData.category}
-            imgUrl={tempData.imgUrl}
-          />
-        </li>
-        <li className="home-blog__item">
-          <Article
-            heading={tempData.heading}
-            content={tempData.content}
-            date={tempData.date}
-            category={tempData.category}
-            imgUrl={tempData.imgUrl}
-          />
-        </li>
-        <li className="home-blog__item">
-          <Article
-            heading={tempData.heading}
-            content={tempData.content}
-            date={tempData.date}
-            category={tempData.category}
-            imgUrl={tempData.imgUrl}
-          />
-        </li>
-      </ul>
+      <ul className="home-blog__list">{content()}</ul>
     </section>
   );
-};
+});
 
 export default HomeBlog;

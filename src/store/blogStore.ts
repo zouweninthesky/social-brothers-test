@@ -3,6 +3,7 @@ import { action, makeObservable, observable } from "mobx";
 import BlogService from "../api/BlogService";
 import {
   ARTICLES_PER_PAGE_BLOG,
+  ARTICLES_PER_PAGE_HOME,
   // ARTICLES_PER_PAGE_HOME,
 } from "../utils/constants";
 import { BlogArticleInt } from "../utils/interfaces";
@@ -17,7 +18,7 @@ class BlogStore {
     makeObservable(this, {
       currentPage: observable,
       articles: observable,
-      blogArticlesLoad: action,
+      articlesLoad: action,
       articlesSet: action,
     });
   }
@@ -34,11 +35,11 @@ class BlogStore {
     this.totalPages = number;
   }
 
-  async blogArticlesLoad() {
+  async articlesLoad(isHome?: Boolean) {
     Store.loadingStarted();
     const response = await BlogService.getPosts(
       this.currentPage,
-      ARTICLES_PER_PAGE_BLOG
+      isHome ? ARTICLES_PER_PAGE_HOME : ARTICLES_PER_PAGE_BLOG
     );
 
     this.articlesSet(response.data);

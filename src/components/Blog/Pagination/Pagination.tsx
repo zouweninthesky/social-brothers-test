@@ -8,7 +8,7 @@ const Pagination = () => {
 
   const getPage = (pageNumber: number) => {
     blogStore.currentPageSet(pageNumber);
-    blogStore.blogArticlesLoad();
+    blogStore.articlesLoad();
   };
 
   const createLink = (i: number) => {
