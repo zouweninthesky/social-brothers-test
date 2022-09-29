@@ -30,9 +30,11 @@ const Article: FC<ArticlePr> = ({
         <p className="article__header-info">{category}</p>
       </div>
       <div className="article__body">
-        <h3 className="article__heading">{heading}</h3>
+        <h3 className="article__heading">
+          {heading.length > 9 ? `${heading.slice(0, 9)}...` : heading}
+        </h3>
         <p className="article__content">
-          {content.length > 98 ? `${content.slice(0, 98)}...` : content}
+          {content.length > 70 ? `${content.slice(0, 70)}...` : content}
         </p>
       </div>
     </article>
