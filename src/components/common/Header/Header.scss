@@ -2,6 +2,7 @@
 
 .header {
   position: relative;
+
   min-height: 250px;
 
   &__bg,
@@ -33,6 +34,7 @@
   &__logo {
     width: 301px;
     height: 71px;
+
     margin: 0;
   }
 
@@ -42,11 +44,13 @@
   }
 
   &__nav-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: flex-end;
+
+    list-style: none;
+
+    margin: 0;
+    padding: 0;
   }
 
   &__nav-item {
@@ -58,17 +62,20 @@
   }
 
   &__link {
-    position: relative;
     font-size: 1.125rem;
     color: $color-background-primary;
+
+    position: relative;
 
     &--active::before {
       content: "";
       position: absolute;
       left: 0;
       bottom: -2px;
+
       width: 100%;
       height: 2px;
+
       background-color: $color-accent;
     }
 
@@ -77,8 +84,10 @@
       position: absolute;
       right: 0;
       bottom: -2px;
+
       width: 0;
       height: 2px;
+
       background-color: $color-accent;
       transition: width 100ms ease-in;
     }
@@ -90,8 +99,9 @@
 
   &__heading {
     color: $color-background-primary;
-    text-align: center;
     font-size: 3rem;
+    text-align: center;
+
     margin-top: 20px;
   }
 }
