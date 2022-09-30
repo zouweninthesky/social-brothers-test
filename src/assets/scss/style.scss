@@ -97,6 +97,17 @@ a {
     height: 40px;
 
     background-color: $color-background-quaternary;
+
+    &--short {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      padding: 0 0.5rem;
+
+      width: 40%;
+    }
   }
 
   &__dropdown {
@@ -105,6 +116,7 @@ a {
     left: 0;
     width: 100%;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+    z-index: 2;
   }
 
   &__dropdown-list {
@@ -139,7 +151,7 @@ a {
     width: 100%;
     height: 100%;
 
-    padding: 0.5rem;
+    padding: 0.75rem 1.125rem;
 
     border: 0;
     background-color: transparent;
@@ -149,6 +161,27 @@ a {
     &::placeholder {
       color: $color-font-quaternary;
       font-style: italic;
+    }
+  }
+
+  & textarea {
+    display: block;
+    font-family: inherit;
+    font-size: 0.75rem;
+    color: $color-font-primary;
+
+    border: 0;
+    height: 214px;
+    width: 100%;
+    max-width: 100%;
+    padding: 0.75rem 1.125rem;
+
+    resize: vertical;
+
+    background-color: $color-background-quaternary;
+
+    &:focus {
+      outline: none;
     }
   }
 
@@ -194,6 +227,51 @@ a {
     &--empty {
       font-style: italic;
     }
+  }
+
+  input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__upload-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    flex-grow: 1;
+
+    height: 24px;
+    color: $color-background-primary;
+    font-family: inherit;
+    font-size: 0.625rem;
+
+    margin-left: 1rem;
+    padding: 0.5rem 0.75rem;
+
+    background-color: $color-background-tertiary;
+    border: 0;
+    border-radius: 18px;
+
+    cursor: pointer;
+  }
+
+  &__resize-sub {
+    position: absolute;
+
+    bottom: 0;
+    right: 0;
+
+    width: 30px;
+    height: 30px;
+
+    background-color: $color-background-tertiary;
+
+    pointer-events: none;
   }
 }
 

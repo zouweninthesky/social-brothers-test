@@ -9,6 +9,7 @@ interface ButtonInt {
 const Button: FC<ButtonInt> = ({ title, onClick }) => {
   return (
     <button
+      type="button"
       className="button"
       onClick={() => {
         onClick();

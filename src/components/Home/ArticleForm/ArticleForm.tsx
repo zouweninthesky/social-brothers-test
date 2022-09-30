@@ -2,6 +2,9 @@ import React from "react";
 
 import TextInput from "../../common/inputs/TextInput/TextInput";
 import Dropdown from "../../common/inputs/Dropdown/Dropdown";
+import TextArea from "../../common/inputs/TextArea/TextArea";
+import Button from "../../common/Button/Button";
+import ImageInput from "../../common/inputs/ImageInput/ImageInput";
 import "./ArticleForm.scss";
 
 const ArticleForm = () => {
@@ -15,44 +18,20 @@ const ArticleForm = () => {
           options={[
             { name: "", dutchName: "Geen categorie" },
             { name: "Tech", dutchName: "Tech" },
-            { name: "Medicine", dutchName: "Medicine" },
+            { name: "Medicine", dutchName: "Medizin" },
           ]}
         />
-        <div>
-          <label htmlFor="form-img">Header afdbeelding</label>
-          <input id="form-img" type="file" onChange={() => {}} />
-        </div>
-        <div>
-          <label htmlFor="form-content">Bericht</label>
-          <textarea id="form-content" name=""></textarea>
-        </div>
+        <ImageInput label="Header afdbeelding" />
+        <TextArea label="Bericht" />
+        <Button
+          title="Bericht aanmaken"
+          onClick={() => {
+            console.log(1);
+          }}
+        />
       </form>
     </section>
   );
 };
 
 export default ArticleForm;
-
-{
-  /* <input
-          type="file"
-          name=""
-          id=""
-          ref={fileInput}
-          accept="image/*"
-          className="modal__upload-button"
-          onChange={async (e) => {
-            e.preventDefault();
-            const reader = new FileReader();
-            console.log(e.target.files[0]);
-            reader.readAsArrayBuffer(e.target.files[0]);
-            reader.onload = () => {
-              console.log(reader.result);
-              EditorImagesStore.addCommentImage(
-                reader.result,
-                e.target.files[0].name
-              );
-              EditorStepStore.saveStepDescriptionImage();
-            };
-          }} */
-}
