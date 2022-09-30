@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import BackgroundImg from "../../../assets/img/background.png";
 import Logo from "../../../assets/img/logo.svg";
 import "./Header.scss";
@@ -19,7 +19,13 @@ const Header: FC<HeaderPr> = ({ isBlog }) => {
       <div className="header__bg-filter"></div>
       <div className="header__wrapper container">
         <div className="header__upper">
-          <img className="header__logo" src={Logo} alt="" />
+          {isBlog ? (
+            <Link to="/">
+              <img className="header__logo" src={Logo} alt="" />
+            </Link>
+          ) : (
+            <img className="header__logo" src={Logo} alt="" />
+          )}
           <h1 className="visually-hidden">Social Brothers</h1>
           <nav className="header__nav">
             <ul className="header__nav-list">
@@ -52,7 +58,7 @@ const Header: FC<HeaderPr> = ({ isBlog }) => {
           </nav>
         </div>
       </div>
-      {isBlog ? <h2 className="header__heading">Blog</h2> : <></>}
+      {isBlog && <h2 className="header__heading">Blog</h2>}
     </header>
   );
 };
