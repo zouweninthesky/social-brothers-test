@@ -1,7 +1,8 @@
 import React from "react";
 import { observer } from "mobx-react-lite";
-import blogStore from "../../../store/blogStore";
 import "./Pagination.scss";
+
+import blogStore from "../../../store/blogStore";
 
 const Pagination = () => {
   const { currentPage, totalPages } = blogStore;

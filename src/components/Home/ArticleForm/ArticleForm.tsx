@@ -1,11 +1,11 @@
 import React from "react";
+import "./ArticleForm.scss";
 
 import TextInput from "../../common/inputs/TextInput/TextInput";
 import Dropdown from "../../common/inputs/Dropdown/Dropdown";
 import TextArea from "../../common/inputs/TextArea/TextArea";
 import Button from "../../common/Button/Button";
 import ImageInput from "../../common/inputs/ImageInput/ImageInput";
-import "./ArticleForm.scss";
 
 const ArticleForm = () => {
   return (

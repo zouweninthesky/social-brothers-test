@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
-import Article from "../../common/Article/Article";
-import BlogStore from "../../../store/blogStore";
 import { observer } from "mobx-react-lite";
-import Button from "../../common/Button/Button";
 import "./HomeBlog.scss";
+
+import Article from "../../common/Article/Article";
+import Button from "../../common/Button/Button";
+
+import BlogStore from "../../../store/blogStore";
 
 const HomeBlog = observer(() => {
   const { currentPage, articles } = BlogStore;

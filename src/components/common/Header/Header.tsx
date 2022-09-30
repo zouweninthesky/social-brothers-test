@@ -1,8 +1,9 @@
 import React, { FC } from "react";
 import { Link, NavLink } from "react-router-dom";
+import "./Header.scss";
+
 import BackgroundImg from "../../../assets/img/background.png";
 import Logo from "../../../assets/img/logo.svg";
-import "./Header.scss";
 
 interface HeaderPr {
   isBlog?: boolean;
