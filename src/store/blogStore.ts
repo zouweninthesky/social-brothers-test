@@ -18,13 +18,22 @@ class BlogStore {
     makeObservable(this, {
       currentPage: observable,
       articles: observable,
-      articlesLoad: action,
       articlesSet: action,
+      currentPageSet: action,
+      articlesLoad: action,
     });
   }
 
-  articlesSet(data: BlogArticleInt[]) {
-    this.articles = [...data];
+  resetStore() {
+    this.articlesSet(null);
+    this.currentPageSet(1);
+  }
+
+  articlesSet(data: BlogArticleInt[] | null) {
+    if (data?.length) {
+      this.articles = [...data];
+    }
+    this.articles = data;
   }
 
   currentPageSet(pageNumber: number) {
@@ -44,7 +53,6 @@ class BlogStore {
 
     this.articlesSet(response.data);
     this.totalPagesSet(response.last_page);
-    // this.totalPagesSet(9);
     Store.loadingFinished();
   }
 }
