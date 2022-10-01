@@ -51,8 +51,13 @@ class BlogStore {
       isHome ? ARTICLES_PER_PAGE_HOME : ARTICLES_PER_PAGE_BLOG
     );
 
-    this.articlesSet(response.data);
-    this.totalPagesSet(response.last_page);
+    if (response) {
+      this.articlesSet(response.data);
+      this.totalPagesSet(response.last_page);
+    } else {
+      Store.errorOccured();
+    }
+
     Store.loadingFinished();
   }
 }

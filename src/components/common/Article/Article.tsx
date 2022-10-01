@@ -25,6 +25,14 @@ const Article: FC<ArticlePr> = ({
     return "content";
   };
 
+  const contentDate = () => {
+    let d = new Date(date);
+    return `${d.getMonth().toString().padStart(2, "0")}-${d
+      .getDay()
+      .toString()
+      .padStart(2, "0")}-${d.getFullYear()}`;
+  };
+
   return (
     <article className="article">
       <div className="article__header">
@@ -33,7 +41,7 @@ const Article: FC<ArticlePr> = ({
           src={`${MAIN_API_URL}storage/${imgUrl}`}
           alt=""
         />
-        <p className="article__header-info">{date}</p>
+        <p className="article__header-info">{contentDate()}</p>
         <p className="article__header-info">{category}</p>
       </div>
       <div className="article__body">

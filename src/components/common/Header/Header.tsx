@@ -15,7 +15,7 @@ const Header: FC<HeaderPr> = ({ isBlog }) => {
       <img
         className="header__bg"
         src={BackgroundImg}
-        alt="Two men in VR-headsets, standing in some"
+        alt="Two men in VR-headsets, standing in some loft space"
       />
       <div className="header__bg-filter"></div>
       <div className="header__wrapper container">

@@ -24,6 +24,7 @@ class Store {
 
   errorOccured() {
     this.error = true;
+    console.log("whoops");
   }
 }
 

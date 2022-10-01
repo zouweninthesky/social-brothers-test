@@ -5,18 +5,28 @@ import TOKEN from "../utils/token";
 
 class BlogService {
   async getPosts(page: number, perPage: number) {
-    const response = await fetch(
-      `${MAIN_API_URL}api/posts?page=${page}&perPage=${perPage}`,
-      {
-        method: "GET",
-        headers: {
-          token: TOKEN,
-        },
+    let data: BlogArticlesResponseInt | null = null;
+    try {
+      const response = await fetch(
+        `${MAIN_API_URL}api/posts?page=${page}&perPage=${perPage}`,
+        {
+          method: "GET",
+          headers: {
+            token: TOKEN,
+          },
+        }
+      );
+      if (!response.ok) {
+        throw new Error(response.statusText);
       }
-    );
-    const data: BlogArticlesResponseInt = await response.json();
 
-    return data;
+      data = await response.json();
+    } catch (e) {
+      data = null;
+      // return new Error();
+    } finally {
+      return data;
+    }
   }
 }
 
