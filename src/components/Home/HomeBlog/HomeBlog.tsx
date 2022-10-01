@@ -12,7 +12,7 @@ const HomeBlog = observer(() => {
 
   useEffect(() => {
     (async () => {
-      BlogStore.resetStore();
+      BlogStore.reset();
       BlogStore.articlesLoad(true);
     })();
   }, []);

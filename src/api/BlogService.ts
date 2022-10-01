@@ -28,6 +28,30 @@ class BlogService {
       return data;
     }
   }
+
+  async getCategories() {
+    let categories = null;
+    try {
+      const response = await fetch(`${MAIN_API_URL}api/categories`, {
+        method: "GET",
+        headers: {
+          token: TOKEN,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      categories = await response.json();
+      console.log(categories);
+    } catch (e) {
+      categories = null;
+      // return new Error();
+    } finally {
+      return categories;
+    }
+  }
 }
 
 export default new BlogService();

@@ -14,13 +14,15 @@ interface BlogArticlesResponseInt {
   total: number;
 }
 
+interface BlogCategoryInt {
+  id: number;
+  name: string;
+  created_at: null | string;
+  updated_at: null | string;
+}
+
 interface BlogArticleInt {
-  category: {
-    id: number;
-    name: string;
-    created_at: null | string;
-    updated_at: null | string;
-  };
+  category: BlogCategoryInt;
   category_id: number;
   content: string;
   created_at: string;
@@ -30,4 +32,4 @@ interface BlogArticleInt {
   updated_at: string;
 }
 
-export type { BlogArticleInt, BlogArticlesResponseInt };
+export type { BlogArticleInt, BlogCategoryInt, BlogArticlesResponseInt };

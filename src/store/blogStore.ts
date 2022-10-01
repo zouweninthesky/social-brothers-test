@@ -24,7 +24,7 @@ class BlogStore {
     });
   }
 
-  resetStore() {
+  reset() {
     this.articlesSet(null);
     this.currentPageSet(1);
   }

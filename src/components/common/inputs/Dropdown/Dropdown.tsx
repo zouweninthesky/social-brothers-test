@@ -1,30 +1,33 @@
 import React, { FC, useState } from "react";
 
+import { BlogCategoryInt } from "../../../../utils/interfaces";
+
 interface DropdownInt {
   label: string;
   options: {
+    id: number;
     name: string;
-    dutchName: string;
   }[];
   initialOption?: number;
 }
 
 const Dropdown: FC<DropdownInt> = ({ label, options, initialOption = 0 }) => {
-  const [option, setOption] = useState(options[initialOption]);
+  const [option, setOption] = useState<null | { id: number; name: string }>(
+    null
+  );
   const [isOpen, setIsOpen] = useState(false);
 
   const toggling = () => setIsOpen(!isOpen);
 
-  const onOptionClicked = (name: string) => {
-    const [option] = options.filter((opt, i) => opt.name === name);
+  const onOptionClicked = (id: number) => {
+    const [option] = options.filter((opt, i) => opt.id === id);
     setOption(option);
     toggling();
   };
 
   const headerClass = () => {
     let className = "input__dropdown-option input__dropdown-option--with-arrow";
-    if (option.name === "")
-      className = className.concat(" input__dropdown-option--empty");
+    if (!option) className = className.concat(" input__dropdown-option--empty");
     if (isOpen)
       className = className.concat(
         " input__dropdown-option--with-arrow-rotated"
@@ -37,25 +40,25 @@ const Dropdown: FC<DropdownInt> = ({ label, options, initialOption = 0 }) => {
       <label htmlFor="">{label}</label>
       <div className="input__wrapper" onClick={toggling}>
         <button type="button" className={headerClass()}>
-          {option.dutchName}
+          {option ? option.name : "Geen categorie"}
         </button>
       </div>
       {isOpen && (
         <div className="input__dropdown">
           <ul className="input__dropdown-list">
             {options.map((opt) => (
-              <li key={opt.name} className="input__dropdown-item">
+              <li key={opt.id} className="input__dropdown-item">
                 <div className="input__wrapper">
                   <button
                     type="button"
                     className={
-                      option.name === opt.name
+                      option && option.id === opt.id
                         ? "input__dropdown-option input__dropdown-option--chosen"
                         : "input__dropdown-option"
                     }
-                    onClick={() => onOptionClicked(opt.name)}
+                    onClick={() => onOptionClicked(opt.id)}
                   >
-                    {opt.dutchName}
+                    {opt.name}
                   </button>
                 </div>
               </li>

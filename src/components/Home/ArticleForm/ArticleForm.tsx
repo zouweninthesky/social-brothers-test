@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { observer } from "mobx-react-lite";
 import "./ArticleForm.scss";
 
 import TextInput from "../../common/inputs/TextInput/TextInput";
@@ -7,20 +8,23 @@ import TextArea from "../../common/inputs/TextArea/TextArea";
 import Button from "../../common/Button/Button";
 import ImageInput from "../../common/inputs/ImageInput/ImageInput";
 
-const ArticleForm = () => {
+import CreateStore from "../../../store/createStore";
+
+const ArticleForm = observer(() => {
+  const { categories } = CreateStore;
+
+  useEffect(() => {
+    (async () => {
+      CreateStore.reset();
+      CreateStore.getCategories();
+    })();
+  }, []);
   return (
     <section className="article-form">
       <h3 className="article-form__header">Plaats een blog bericht</h3>
       <form action="" className="article-form__form">
         <TextInput label="Berichtnaam" placeholder="Geen titel" />
-        <Dropdown
-          label="Categorie"
-          options={[
-            { name: "", dutchName: "Geen categorie" },
-            { name: "Tech", dutchName: "Tech" },
-            { name: "Medicine", dutchName: "Medizin" },
-          ]}
-        />
+        {categories && <Dropdown label="Categorie" options={categories} />}
         <ImageInput label="Header afdbeelding" />
         <TextArea label="Bericht" />
         <Button
@@ -32,6 +36,6 @@ const ArticleForm = () => {
       </form>
     </section>
   );
-};
+});
 
 export default ArticleForm;
