@@ -5,6 +5,9 @@
 
   background-color: $color-background-primary;
 
+  max-height: 654px;
+  overflow-y: auto;
+
   &__list {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -19,5 +22,11 @@
 
   &__item {
     min-height: 263px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }

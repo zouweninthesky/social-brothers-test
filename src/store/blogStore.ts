@@ -29,11 +29,12 @@ class BlogStore {
     this.currentPageSet(1);
   }
 
-  articlesSet(data: BlogArticleInt[] | null) {
-    if (data?.length) {
+  articlesSet(data: BlogArticleInt[] | null, isHome?: boolean) {
+    if (isHome && this.articles?.length && data?.length) {
+      this.articles = [...this.articles, ...data];
+    } else if (data?.length) {
       this.articles = [...data];
     }
-    this.articles = data;
   }
 
   currentPageSet(pageNumber: number) {
@@ -44,16 +45,22 @@ class BlogStore {
     this.totalPages = number;
   }
 
-  async articlesLoad(isHome?: Boolean) {
+  async articlesLoad(isHome?: boolean, isInitial?: boolean) {
     Store.loadingStarted();
-    this.articlesSet(null);
+    if (!isHome) {
+      this.articlesSet(null);
+    }
     const response = await BlogService.getPosts(
       this.currentPage,
       isHome ? ARTICLES_PER_PAGE_HOME : ARTICLES_PER_PAGE_BLOG
     );
 
     if (response) {
-      this.articlesSet(response.data);
+      if (isInitial) {
+        this.articlesSet(response.data);
+      } else {
+        this.articlesSet(response.data, isHome);
+      }
       this.totalPagesSet(response.last_page);
     } else {
       Store.errorOccured();

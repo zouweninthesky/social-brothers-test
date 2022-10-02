@@ -21,7 +21,6 @@ class BlogService {
       }
 
       data = await response.json();
-      console.log(data);
     } catch (e) {
       data = null;
     } finally {
@@ -44,7 +43,6 @@ class BlogService {
       }
 
       categories = await response.json();
-      console.log(categories);
     } catch (e) {
       categories = null;
     } finally {

@@ -4,16 +4,19 @@ import "./HomeBlog.scss";
 
 import Article from "../../common/Article/Article";
 import Button from "../../common/Button/Button";
+import Spinner from "../../common/Spinner/Spinner";
 
 import BlogStore from "../../../store/blogStore";
+import Store from "../../../store";
 
 const HomeBlog = observer(() => {
   const { currentPage, articles } = BlogStore;
+  const { loading } = Store;
 
   useEffect(() => {
     (async () => {
       BlogStore.reset();
-      BlogStore.articlesLoad(true);
+      BlogStore.articlesLoad(true, true);
     })();
   }, []);
 
@@ -61,7 +64,13 @@ const HomeBlog = observer(() => {
   return (
     <section className="home-blog">
       <ul className="home-blog__list">{content()}</ul>
-      <Button title="Meer laden" onClick={onClick} />
+      {loading ? (
+        <div className="home-blog__wrapper">
+          <Spinner width={40} />
+        </div>
+      ) : (
+        <Button title="Meer laden" onClick={onClick} />
+      )}
     </section>
   );
 });

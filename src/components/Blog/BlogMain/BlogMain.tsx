@@ -11,7 +11,6 @@ import Spinner from "../../common/Spinner/Spinner";
 
 const BlogMain = observer(() => {
   const { articles } = BlogStore;
-  const { loading } = Store;
 
   useEffect(() => {
     (async () => {

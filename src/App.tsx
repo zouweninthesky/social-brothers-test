@@ -7,7 +7,11 @@ import Footer from "./components/common/Footer/Footer";
 import ErrorNotification from "./components/common/ErrorNotification/ErrorNotification";
 import Sprite from "./components/common/Sprite/Sprite";
 
+import { useLocation } from "react-router-dom";
+
 const App = () => {
+  const location = useLocation();
+  console.log(location.pathname);
   return (
     <>
       <Sprite />
