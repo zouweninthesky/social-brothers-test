@@ -23,7 +23,7 @@ const ImageInput: FC<ImageInputInt> = ({
     if (!value) {
       return (
         <>
-          <Icon id="camera" width={14} />
+          <Icon id="camera" width={13} />
 
           <button
             className="input__upload-button"

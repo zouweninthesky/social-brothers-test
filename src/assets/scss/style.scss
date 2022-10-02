@@ -82,7 +82,7 @@ a {
 
   position: relative;
 
-  margin-bottom: 24px;
+  margin-bottom: 23px;
 
   & label {
     color: $color-font-secondary;
@@ -93,7 +93,7 @@ a {
 
   &__wrapper {
     width: 100%;
-    height: 40px;
+    height: 2.5rem;
 
     background-color: $color-background-quaternary;
 
@@ -104,20 +104,29 @@ a {
       align-items: center;
 
       width: 40%;
+      height: 48px;
 
       padding: 0 0.5rem;
+
+      & svg {
+        margin-left: 8px;
+      }
+
+      & button {
+        margin-right: 8px;
+      }
     }
   }
 
   &__dropdown {
     position: absolute;
 
-    top: 64px;
+    top: 4rem;
     left: 0;
 
     width: 100%;
 
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.4);
+    box-shadow: 0 0.125rem 0.25rem 0 rgba(0, 0, 0, 0.4);
     z-index: 2;
   }
 
@@ -134,11 +143,11 @@ a {
     &::after {
       content: "";
       position: absolute;
-      top: -1px;
+      top: -0.0625rem;
       left: 0;
 
       width: 100%;
-      height: 2px;
+      height: 0.125rem;
 
       background-color: $color-background-tertiary;
     }
@@ -156,7 +165,7 @@ a {
     width: 100%;
     height: 100%;
 
-    padding: 0.75rem 1.125rem;
+    padding: 11px 1.125rem 13px;
 
     border: 0;
     background-color: transparent;
@@ -177,7 +186,7 @@ a {
 
     width: 100%;
     max-width: 100%;
-    height: 214px;
+    height: 13.375rem;
 
     padding: 0.75rem 1.125rem;
 
@@ -206,18 +215,18 @@ a {
     &--with-arrow::before {
       content: "";
       position: absolute;
-      right: 20px;
-      top: 20px;
+      right: 1.25rem;
+      top: 18px;
 
-      width: 8px;
-      height: 2px;
+      width: 6px;
+      height: 1px;
 
       transform: rotate(45deg);
       background-color: $color-arrow;
     }
 
     &--with-arrow::after {
-      right: 15px;
+      right: 17px;
 
       transform: rotate(-45deg);
     }
@@ -255,7 +264,7 @@ a {
     font-family: inherit;
     font-size: 0.625rem;
 
-    height: 24px;
+    height: 1.5rem;
 
     margin-left: 1rem;
     padding: 0.5rem 0.75rem;
@@ -270,8 +279,8 @@ a {
   &__remove-button {
     position: relative;
 
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
 
     padding: 0;
 
@@ -282,13 +291,13 @@ a {
     &::after,
     &::before {
       position: absolute;
-      top: 9px;
+      top: 0.5625rem;
       left: 0;
 
       width: 100%;
-      height: 2px;
+      height: 0.125rem;
 
-      border-radius: 2px;
+      border-radius: 0.125rem;
       background-color: $color-background-tertiary;
 
       content: "";
@@ -313,8 +322,8 @@ a {
     bottom: 0;
     right: 0;
 
-    width: 24px;
-    height: 28px;
+    width: 23px;
+    height: 1.5rem;
 
     background-color: $color-background-quaternary;
     pointer-events: none;
@@ -334,5 +343,5 @@ a {
   max-width: 1440px;
 
   margin: 0 auto;
-  padding: 50px;
+  padding: 3.125rem 3.125rem 3.0625rem;
 }

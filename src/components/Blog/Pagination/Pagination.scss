@@ -16,7 +16,7 @@
   &__item {
     font-size: 0.75rem;
 
-    margin: 0 8px;
+    margin: 0 0.5rem;
   }
 
   &__link {
@@ -37,8 +37,8 @@
 
       font-weight: 700;
 
-      width: 32px;
-      height: 36px;
+      width: 2rem;
+      height: 2.25rem;
 
       border-radius: 50%;
       background-color: $color-background-quaternary;
@@ -59,8 +59,8 @@
 
     & svg {
       position: relative;
-      top: 4px;
-      margin-left: 8px;
+      top: 0.25rem;
+      margin-left: 0.5rem;
     }
   }
 }

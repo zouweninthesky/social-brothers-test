@@ -18,7 +18,7 @@ const Sprite = () => {
         {
           name: "drag",
           fill: "currentColor",
-          svg: '<svg width="23" height="24" viewBox="0 0 23 24" fill="none" ><line x1="1.21913" y1="21.3753" x2="17.4612" y2="1.07272" stroke="#979797" stroke-width="2"/><line x1="8.21913" y1="22.4741" x2="19.4637" y2="8.41846" stroke="#979797" stroke-width="2"/><line x1="15.2191" y1="23.3753" x2="21.4661" y2="15.5666" stroke="#979797" stroke-width="2"/></svg>',
+          svg: '<svg width="23" height="24" viewBox="0 0 23 24" fill="none" ><line x1="1.67685" y1="19.1409" x2="17.736" y2="1.30539" stroke="#979797" stroke-width="2"/><line x1="7.85695" y1="21.3927" x2="18.563" y2="9.5024" stroke="#979797" stroke-width="2"/><line x1="13.6568" y1="23.4409" x2="20.0136" y2="16.381" stroke="#979797" stroke-width="2"/></svg>',
         },
       ]}
     />
