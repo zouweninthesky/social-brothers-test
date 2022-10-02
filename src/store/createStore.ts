@@ -4,6 +4,7 @@ import Store from ".";
 import { BlogCategoryInt } from "../utils/interfaces";
 import BlogService from "../api/BlogService";
 import { MAIN_API_URL } from "../utils/links";
+import BlogStore from "./blogStore";
 
 class CreateStore {
   categories: BlogCategoryInt[] | null = null;
@@ -49,6 +50,10 @@ class CreateStore {
     formData.append("category_id", categoryId.toString());
     formData.append("image", file.file, file.fileName);
     const isSuccessful = await BlogService.postArticle(formData);
+    if (isSuccessful) {
+      BlogStore.reset();
+      BlogStore.articlesLoad(true, true);
+    }
     return isSuccessful;
   }
 }

@@ -8,13 +8,11 @@ interface DropdownInt {
     id: number;
     name: string;
   }[];
-  onChange: Function;
+  value: { id: number; name: string };
+  setValue: Function;
 }
 
-const Dropdown: FC<DropdownInt> = ({ label, options, onChange }) => {
-  const [option, setOption] = useState<null | { id: number; name: string }>(
-    null
-  );
+const Dropdown: FC<DropdownInt> = ({ label, options, value, setValue }) => {
   const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [isOpen, setIsOpen] = useState(false);
 
@@ -44,14 +42,15 @@ const Dropdown: FC<DropdownInt> = ({ label, options, onChange }) => {
 
   const onOptionClicked = (id: number) => {
     const [option] = options.filter((opt, i) => opt.id === id);
-    setOption(option);
-    onChange(option.id);
+    setValue(option);
+    // onChange(option.id);
     handleClick();
   };
 
   const headerClass = () => {
     let className = "input__dropdown-option input__dropdown-option--with-arrow";
-    if (!option) className = className.concat(" input__dropdown-option--empty");
+    if (value.id === 0)
+      className = className.concat(" input__dropdown-option--empty");
     if (isOpen)
       className = className.concat(
         " input__dropdown-option--with-arrow-rotated"
@@ -64,7 +63,7 @@ const Dropdown: FC<DropdownInt> = ({ label, options, onChange }) => {
       <label htmlFor="">{label}</label>
       <div className="input__wrapper" onClick={handleClick}>
         <button type="button" className={headerClass()}>
-          {option ? option.name : "Geen categorie"}
+          {value.id !== 0 ? value.name : "Geen categorie"}
         </button>
       </div>
       {isOpen && (
@@ -76,7 +75,7 @@ const Dropdown: FC<DropdownInt> = ({ label, options, onChange }) => {
                   <button
                     type="button"
                     className={
-                      option && option.id === opt.id
+                      value && value.id === opt.id
                         ? "input__dropdown-option input__dropdown-option--chosen"
                         : "input__dropdown-option"
                     }

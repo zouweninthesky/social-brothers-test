@@ -50,7 +50,6 @@ class BlogStore {
   async articlesLoad(isHome?: boolean, isInitial?: boolean) {
     Store.loadingStarted();
     if (!isHome) {
-      console.log("here");
       this.articlesSet(null);
     }
     const response = await BlogService.getPosts(

@@ -23,7 +23,7 @@ const ArticleForm = observer(() => {
   const { categories } = CreateStore;
   const { loading } = Store;
   const [title, setTitle] = useState("");
-  const [categoryID, setCategoryId] = useState(0);
+  const [categoryID, setCategoryId] = useState({ id: 0, name: "" });
   const [file, setFile] = useState<null | {
     file: Blob;
     fileName: string;
@@ -58,30 +58,39 @@ const ArticleForm = observer(() => {
             <Dropdown
               label="Categorie"
               options={categories}
-              onChange={setCategoryId}
+              value={categoryID}
+              setValue={setCategoryId}
             />
           )}
           <ImageInput
             label="Header afbeelding"
             uploadTitle={BUTTON_ADD_IMAGE}
             changeTitle={BUTTON_CHANGE_IMAGE}
-            onChange={setFile}
+            value={file}
+            setValue={setFile}
           />
           <TextArea label="Bericht" value={content} onInput={setContent} />
           <Button
             title="Bericht aanmaken"
             onClick={async () => {
               setError("");
-              const error = isFormInvalid(title, categoryID, file, content);
+              const error = isFormInvalid(title, categoryID.id, file, content);
               if (error === "" && file !== null) {
                 const isSuccessful = await CreateStore.createPost(
                   title,
                   content,
-                  categoryID,
+                  categoryID.id,
                   file
                 );
                 if (isSuccessful) {
                   setSuccess(true);
+                  setTitle("");
+                  setCategoryId({ id: 0, name: "" });
+                  setFile(null);
+                  setContent("");
+                  setTimeout(() => {
+                    setSuccess(false);
+                  }, 2000);
                 } else {
                   Store.errorOccured();
                 }

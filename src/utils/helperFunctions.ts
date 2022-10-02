@@ -18,4 +18,27 @@ const isFormInvalid = (
   return "";
 };
 
-export { isFormInvalid };
+const fetchHandler = async (
+  url: string,
+  options: {},
+  dataRequired?: boolean
+) => {
+  let responseResult;
+  try {
+    const response = await fetch(url, options);
+    if (!response.ok) {
+      throw new Error(response.statusText);
+    }
+    if (dataRequired) {
+      responseResult = await response.json();
+    } else {
+      responseResult = true;
+    }
+  } catch (e) {
+    responseResult = null;
+  } finally {
+    return responseResult;
+  }
+};
+
+export { isFormInvalid, fetchHandler };

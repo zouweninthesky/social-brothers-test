@@ -4,18 +4,20 @@ import Icon from "../../../common/Icon/Icon";
 
 interface ImageInputInt {
   label: string;
+  value: null | { file: Blob; fileName: string };
   uploadTitle?: string;
   changeTitle?: string;
-  onChange: Function;
+  setValue: Function;
 }
 
 const ImageInput: FC<ImageInputInt> = ({
   label,
   uploadTitle = "Add image",
   changeTitle = "Change image",
-  onChange,
+  value,
+  setValue,
 }) => {
-  const [value, setValue] = useState<null | Blob>(null);
+  // const [value, setValue] = useState<null | Blob>(null);
 
   const fileInput = useRef(null);
 
@@ -38,7 +40,12 @@ const ImageInput: FC<ImageInputInt> = ({
     }
     return (
       <>
-        <button className="input__remove-button" onClick={() => setValue(null)}>
+        <button
+          className="input__remove-button"
+          onClick={() => {
+            setValue(null);
+          }}
+        >
           remove
         </button>
         <button
@@ -61,7 +68,6 @@ const ImageInput: FC<ImageInputInt> = ({
     <div className="input">
       <label htmlFor="form-img">{label}</label>
       <div className="input__wrapper input__wrapper--short">
-        {/* <p className="input__temp-icon">temp</p> */}
         <Icon id="camera" width={14} />
         {buttons()}
       </div>
@@ -81,10 +87,7 @@ const ImageInput: FC<ImageInputInt> = ({
             // @ts-ignore I don't know, why Typescript doesn't like the Guard Clause above,
             // it suggests that .files still might be null.
             const file = (e.target as HTMLInputElement).files[0];
-            // @ts-ignore
-            console.log((e.target as HTMLInputElement).files[0]);
-            setValue(file);
-            onChange({ file: file, fileName: file.name });
+            setValue({ file: file, fileName: file.name });
           }
         }}
       />
