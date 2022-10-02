@@ -9,6 +9,7 @@ import Sprite from "./components/common/Sprite/Sprite";
 import Header from "./components/common/Header/Header";
 
 import { BLOG_PATH } from "./utils/strings";
+import { FETCH_ERROR } from "./utils/dutchMessages";
 
 const App = () => {
   let location = useLocation();
@@ -22,7 +23,7 @@ const App = () => {
         <Route path="/blog" element={<Blog />} />
       </Routes>
       <Footer />
-      <ErrorNotification localText="Er is een fout opgetreden. Probeer het later opnieuw." />
+      <ErrorNotification localText={FETCH_ERROR} />
     </>
   );
 };
