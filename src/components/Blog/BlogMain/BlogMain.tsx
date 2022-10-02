@@ -6,8 +6,6 @@ import Article from "../../common/Article/Article";
 import Pagination from "../Pagination/Pagination";
 
 import BlogStore from "../../../store/blogStore";
-import Store from "../../../store";
-import Spinner from "../../common/Spinner/Spinner";
 
 const BlogMain = observer(() => {
   const { articles } = BlogStore;

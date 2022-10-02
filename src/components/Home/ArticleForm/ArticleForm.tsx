@@ -10,6 +10,11 @@ import ImageInput from "../../common/inputs/ImageInput/ImageInput";
 import Spinner from "../../common/Spinner/Spinner";
 
 import { isFormInvalid } from "../../../utils/helperFunctions";
+import {
+  BUTTON_ADD_IMAGE,
+  BUTTON_CHANGE_IMAGE,
+  INPUT_SUCCESS,
+} from "../../../utils/dutchMessages";
 
 import CreateStore from "../../../store/createStore";
 import Store from "../../../store";
@@ -56,7 +61,12 @@ const ArticleForm = observer(() => {
               onChange={setCategoryId}
             />
           )}
-          <ImageInput label="Header afdbeelding" onChange={setFile} />
+          <ImageInput
+            label="Header afbeelding"
+            uploadTitle={BUTTON_ADD_IMAGE}
+            changeTitle={BUTTON_CHANGE_IMAGE}
+            onChange={setFile}
+          />
           <TextArea label="Bericht" value={content} onInput={setContent} />
           <Button
             title="Bericht aanmaken"
@@ -82,9 +92,7 @@ const ArticleForm = observer(() => {
           />
           {error && <p className="article-form__error-message">{error}</p>}
           {success && (
-            <p className="article-form__success-message">
-              Goed zo! Uw bericht wordt aan de rechterkant weergegeven.
-            </p>
+            <p className="article-form__success-message">{INPUT_SUCCESS}</p>
           )}
         </form>
       )}
