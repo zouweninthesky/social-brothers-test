@@ -1,19 +1,10 @@
 @use "../../../assets/scss/variables.scss" as *;
 
 .blog {
-  background-color: $color-background-secondary;
+  // margin: 0 8px;
+  padding: 1.5rem;
 
-  &__container {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-
-  &__wrapper {
-    margin: 0 8px;
-    padding: 1.5rem;
-
-    background-color: $color-background-primary;
-  }
+  background-color: $color-background-primary;
 
   &__list {
     display: grid;

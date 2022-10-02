@@ -54,14 +54,10 @@ const BlogMain = observer(() => {
   };
 
   return (
-    <main className="blog">
-      <div className="blog__container container">
-        <div className="blog__wrapper">
-          <ul className="blog__list">{content()}</ul>
-          <Pagination />
-        </div>
-      </div>
-    </main>
+    <div className="blog">
+      <ul className="blog__list">{content()}</ul>
+      <Pagination />
+    </div>
   );
 });
 

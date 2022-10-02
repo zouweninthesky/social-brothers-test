@@ -18,10 +18,14 @@ const App = () => {
     <>
       <Sprite />
       <Header isBlog={location.pathname === BLOG_PATH} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blog" element={<Blog />} />
-      </Routes>
+      <main className="main">
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blog" element={<Blog />} />
+          </Routes>
+        </div>
+      </main>
       <Footer />
       <ErrorNotification localText={FETCH_ERROR} />
     </>

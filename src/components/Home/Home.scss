@@ -1,18 +1,9 @@
 @use "../../assets/scss/variables.scss" as *;
 
 .home {
-  background-color: $color-background-secondary;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 1.25rem;
 
-  &__container {
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-
-  &__wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 1.25rem;
-
-    margin: 0 0.5rem;
-  }
+  margin: 0 0.5rem;
 }

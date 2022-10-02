@@ -7,17 +7,20 @@ import ArticleForm from "./ArticleForm/ArticleForm";
 
 const Home = () => {
   return (
-    <>
-      <main className="home">
-        <div className="home__container container">
-          <div className="home__wrapper">
-            <ArticleForm />
-            <HomeBlog />
-          </div>
-        </div>
-      </main>
-    </>
+    <div className="home">
+      <ArticleForm />
+      <HomeBlog />
+    </div>
   );
 };
+
+{
+  /* <main className="home"> */
+}
+{
+  /* <div className="home__container container"></div> */
+}
+// </div>
+// </main>
 
 export default Home;

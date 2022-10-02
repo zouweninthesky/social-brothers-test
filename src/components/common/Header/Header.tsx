@@ -18,7 +18,7 @@ const Header: FC<HeaderPr> = ({ isBlog }) => {
         alt="Two men in VR-headsets, standing in some loft space"
       />
       <div className="header__bg-filter"></div>
-      <div className="header__wrapper container">
+      <div className="header__container container">
         <div className="header__upper">
           {isBlog ? (
             <Link to="/">

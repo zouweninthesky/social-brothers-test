@@ -284,10 +284,14 @@ a {
   }
 }
 
+.main {
+  background-color: $color-background-secondary;
+}
+
 .container {
   width: 100%;
   max-width: 1440px;
 
   margin: 0 auto;
-  padding: 0 2.625rem;
+  padding: 50px;
 }
