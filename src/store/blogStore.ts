@@ -34,6 +34,8 @@ class BlogStore {
       this.articles = [...this.articles, ...data];
     } else if (data?.length) {
       this.articles = [...data];
+    } else {
+      this.articles = data;
     }
   }
 
@@ -48,6 +50,7 @@ class BlogStore {
   async articlesLoad(isHome?: boolean, isInitial?: boolean) {
     Store.loadingStarted();
     if (!isHome) {
+      console.log("here");
       this.articlesSet(null);
     }
     const response = await BlogService.getPosts(

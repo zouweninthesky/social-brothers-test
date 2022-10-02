@@ -8,7 +8,6 @@ import ArticleForm from "./ArticleForm/ArticleForm";
 const Home = () => {
   return (
     <>
-      <Header />
       <main className="home">
         <div className="home__container container">
           <div className="home__wrapper">

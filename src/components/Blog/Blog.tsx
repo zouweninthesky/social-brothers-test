@@ -5,7 +5,6 @@ import BlogMain from "./BlogMain/BlogMain";
 const Blog = () => {
   return (
     <>
-      <Header isBlog />
       <BlogMain />
     </>
   );
