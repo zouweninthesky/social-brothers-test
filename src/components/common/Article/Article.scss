@@ -61,7 +61,7 @@
     font-size: 1.5rem;
 
     margin-top: 0;
-    margin-bottom: 8px;
+    margin-bottom: 0.5rem;
   }
 
   &__content {
@@ -90,7 +90,7 @@
   }
 
   @include vp-mobile {
-    min-height: 263px;
+    min-height: 16.4375rem;
 
     &__header {
       height: 7rem;

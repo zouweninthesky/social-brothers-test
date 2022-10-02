@@ -4,16 +4,16 @@
   color: $color-background-primary;
   text-align: center;
   font-size: 0.75rem;
-  line-height: 15px;
+  line-height: 0.9375rem;
 
-  padding: 5px 0 10px;
+  padding: 0.3125rem 0 0.625rem;
 
   background-color: $color-font-primary;
 
   &__copyright {
     position: relative;
-    top: 3px;
+    top: 0.1875rem;
     font-size: 1.25rem;
-    margin-right: 10px;
+    margin-right: 0.625rem;
   }
 }
