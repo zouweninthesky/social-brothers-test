@@ -1,46 +1,15 @@
-# Getting Started with Create React App
+# Assessment for [Social Brothers](https://socialbrothers.nl/).
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Assessment
 
-## Available Scripts
+Create SPA with React.
+"The intention is that you can make blogpost in the left corner, you can use our API where you can save these messages. In the right corner you have to view the latest blogposts. When you click the button ‘meer laden’ it’s important to load more messages in the container. Also, there is an archive for all blogposts."
 
-In the project directory, you can run:
+## How to try
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+To install the app you will require [git](https://git-scm.com/downloads), [node.js](https://nodejs.org/en/) и [npm](https://www.npmjs.com/).\
+Once you have them, create a folder where it's convenient for you and open it with the terminal ("Command Line Interface" in Windows).\
+Once there, enter this command: `git clone git@github.com:zouweninthesky/social-brothers-test.git`.\
+When the project will load, get deeper, into the project folder with `cd social-brothers-test` and type in `npm i` to install the packages required to run the app.\
+When the packages load, type in `npm start`.\
+After that the app will open in your default browser and you will be able to use it.
