@@ -12,4 +12,14 @@
 
     margin-top: 0;
   }
+
+  &__error-message {
+    color: $color-error;
+    text-align: center;
+  }
+
+  &__success-message {
+    color: $color-success;
+    text-align: center;
+  }
 }

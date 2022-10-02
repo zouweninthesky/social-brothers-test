@@ -21,9 +21,9 @@ class BlogService {
       }
 
       data = await response.json();
+      console.log(data);
     } catch (e) {
       data = null;
-      // return new Error();
     } finally {
       return data;
     }
@@ -47,9 +47,31 @@ class BlogService {
       console.log(categories);
     } catch (e) {
       categories = null;
-      // return new Error();
     } finally {
       return categories;
+    }
+  }
+
+  async postArticle(formData: FormData) {
+    let successFlag = null;
+    try {
+      const response = await fetch(`${MAIN_API_URL}api/posts`, {
+        method: "POST",
+        body: formData,
+        headers: {
+          token: TOKEN,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+
+      successFlag = true;
+    } catch (e) {
+      successFlag = null;
+    } finally {
+      return successFlag;
     }
   }
 }

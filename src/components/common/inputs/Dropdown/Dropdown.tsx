@@ -8,10 +8,10 @@ interface DropdownInt {
     id: number;
     name: string;
   }[];
-  initialOption?: number;
+  onChange: Function;
 }
 
-const Dropdown: FC<DropdownInt> = ({ label, options, initialOption = 0 }) => {
+const Dropdown: FC<DropdownInt> = ({ label, options, onChange }) => {
   const [option, setOption] = useState<null | { id: number; name: string }>(
     null
   );
@@ -22,6 +22,7 @@ const Dropdown: FC<DropdownInt> = ({ label, options, initialOption = 0 }) => {
   const onOptionClicked = (id: number) => {
     const [option] = options.filter((opt, i) => opt.id === id);
     setOption(option);
+    onChange(option.id);
     toggling();
   };
 

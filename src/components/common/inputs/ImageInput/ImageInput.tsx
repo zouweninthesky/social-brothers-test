@@ -4,14 +4,16 @@ interface ImageInputInt {
   label: string;
   uploadTitle?: string;
   changeTitle?: string;
+  onChange: Function;
 }
 
 const ImageInput: FC<ImageInputInt> = ({
   label,
   uploadTitle = "Add image",
   changeTitle = "Change image",
+  onChange,
 }) => {
-  const [value, setValue] = useState<null | ArrayBuffer | string>(null);
+  const [value, setValue] = useState<null | Blob>(null);
 
   const fileInput = useRef(null);
 
@@ -69,23 +71,17 @@ const ImageInput: FC<ImageInputInt> = ({
         className=""
         onChange={async (e: ChangeEvent) => {
           e.preventDefault();
-          const reader = new FileReader();
           if (
             e.target &&
             typeof (e.target as HTMLInputElement).files !== null
           ) {
             // @ts-ignore I don't know, why Typescript doesn't like the Guard Clause above,
             // it suggests that .files still might be null.
-            reader.readAsArrayBuffer((e.target as HTMLInputElement).files[0]);
-            reader.onload = () => {
-              console.log(reader.result);
-              setValue(reader.result);
-              // EditorImagesStore.addCommentImage(
-              // reader.result,
-              // e.target.files[0].name
-              // );
-              // EditorStepStore.saveStepDescriptionImage();
-            };
+            const file = (e.target as HTMLInputElement).files[0];
+            // @ts-ignore
+            console.log((e.target as HTMLInputElement).files[0]);
+            setValue(file);
+            onChange({ file: file, fileName: file.name });
           }
         }}
       />

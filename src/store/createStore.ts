@@ -36,7 +36,21 @@ class CreateStore {
 
     Store.loadingFinished();
   }
-  // createPost
+
+  async createPost(
+    title: string,
+    content: string,
+    categoryId: number,
+    file: { file: Blob; fileName: string }
+  ) {
+    let formData = new FormData();
+    formData.append("title", title);
+    formData.append("content", content);
+    formData.append("category_id", categoryId.toString());
+    formData.append("image", file.file, file.fileName);
+    const isSuccessful = await BlogService.postArticle(formData);
+    return isSuccessful;
+  }
 }
 
 export default new CreateStore();

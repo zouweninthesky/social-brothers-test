@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { observer } from "mobx-react-lite";
 import "./ArticleForm.scss";
 
@@ -8,10 +8,22 @@ import TextArea from "../../common/inputs/TextArea/TextArea";
 import Button from "../../common/Button/Button";
 import ImageInput from "../../common/inputs/ImageInput/ImageInput";
 
+import { isFormInvalid } from "../../../utils/helperFunctions";
+
 import CreateStore from "../../../store/createStore";
+import Store from "../../../store";
 
 const ArticleForm = observer(() => {
   const { categories } = CreateStore;
+  const [title, setTitle] = useState("");
+  const [categoryID, setCategoryId] = useState(0);
+  const [file, setFile] = useState<null | {
+    file: Blob;
+    fileName: string;
+  }>(null);
+  const [content, setContent] = useState("");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   useEffect(() => {
     (async () => {
@@ -23,16 +35,49 @@ const ArticleForm = observer(() => {
     <section className="article-form">
       <h3 className="article-form__header">Plaats een blog bericht</h3>
       <form action="" className="article-form__form">
-        <TextInput label="Berichtnaam" placeholder="Geen titel" />
-        {categories && <Dropdown label="Categorie" options={categories} />}
-        <ImageInput label="Header afdbeelding" />
-        <TextArea label="Bericht" />
+        <TextInput
+          label="Berichtnaam"
+          placeholder="Geen titel"
+          value={title}
+          onInput={setTitle}
+        />
+        {categories && (
+          <Dropdown
+            label="Categorie"
+            options={categories}
+            onChange={setCategoryId}
+          />
+        )}
+        <ImageInput label="Header afdbeelding" onChange={setFile} />
+        <TextArea label="Bericht" value={content} onInput={setContent} />
         <Button
           title="Bericht aanmaken"
-          onClick={() => {
-            console.log(1);
+          onClick={async () => {
+            setError("");
+            const error = isFormInvalid(title, categoryID, file, content);
+            if (error === "" && file !== null) {
+              const isSuccessful = await CreateStore.createPost(
+                title,
+                content,
+                categoryID,
+                file
+              );
+              if (isSuccessful) {
+                setSuccess(true);
+              } else {
+                Store.errorOccured();
+              }
+            } else {
+              setError(error);
+            }
           }}
         />
+        {error && <p className="article-form__error-message">{error}</p>}
+        {success && (
+          <p className="article-form__success-message">
+            Goed zo! Uw bericht wordt aan de rechterkant weergegeven.
+          </p>
+        )}
       </form>
     </section>
   );

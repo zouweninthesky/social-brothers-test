@@ -22,7 +22,7 @@ const Article: FC<ArticlePr> = ({
     if (!content.includes(" "))
       return content.length > 24 ? `${content.slice(0, 22)}...` : content;
     if (content.length > 70) return `${content.slice(0, 70)}...`;
-    return "content";
+    return content;
   };
 
   const contentDate = () => {
