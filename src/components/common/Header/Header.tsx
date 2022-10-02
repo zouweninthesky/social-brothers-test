@@ -1,17 +1,29 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import "./Header.scss";
 
 import BackgroundImg from "../../../assets/img/background.png";
-import Logo from "../../../assets/img/logo.svg";
+import Icon from "../Icon/Icon";
+import { toggleScrollDisable } from "../../../utils/helperFunctions";
 
 interface HeaderPr {
   isBlog?: boolean;
 }
 
 const Header: FC<HeaderPr> = ({ isBlog }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpening = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    } else {
+      setIsOpen(true);
+    }
+    toggleScrollDisable(isOpen);
+  };
+
   return (
-    <header className="header">
+    <header className={isOpen ? "header header--open" : "header"}>
       <img
         className="header__bg"
         src={BackgroundImg}
@@ -19,13 +31,32 @@ const Header: FC<HeaderPr> = ({ isBlog }) => {
       />
       <div className="header__bg-filter"></div>
       <div className="header__container container">
+        <button
+          className="header__toggle-button"
+          onClick={handleOpening}
+        ></button>
         <div className="header__upper">
           {isBlog ? (
-            <Link to="/">
-              <img className="header__logo" src={Logo} alt="" />
+            <Link
+              to="/"
+              onClick={() => {
+                setIsOpen(false);
+              }}
+            >
+              <Icon
+                id="main-logo"
+                width={301}
+                height={71}
+                className="header__logo"
+              />
             </Link>
           ) : (
-            <img className="header__logo" src={Logo} alt="" />
+            <Icon
+              id="main-logo"
+              width={301}
+              height={71}
+              className="header__logo"
+            />
           )}
           <h1 className="visually-hidden">Social Brothers</h1>
           <nav className="header__nav">
@@ -39,6 +70,10 @@ const Header: FC<HeaderPr> = ({ isBlog }) => {
                   }
                   to="/"
                   end
+                  onClick={() => {
+                    setIsOpen(false);
+                    toggleScrollDisable(isOpen);
+                  }}
                 >
                   Home
                 </NavLink>
@@ -51,6 +86,10 @@ const Header: FC<HeaderPr> = ({ isBlog }) => {
                       : "header__link"
                   }
                   to="/blog"
+                  onClick={() => {
+                    setIsOpen(false);
+                    toggleScrollDisable(isOpen);
+                  }}
                 >
                   Blog
                 </NavLink>

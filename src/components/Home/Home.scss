@@ -1,7 +1,13 @@
 @use "../../assets/scss/variables.scss" as *;
+@use "../../assets/scss/mixins.scss" as *;
 
 .home {
   display: grid;
   grid-template-columns: 46.5% 51.4%;
   column-gap: 1.25rem;
+
+  @include vp-tablet {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }

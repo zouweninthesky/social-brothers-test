@@ -10,11 +10,7 @@ import ImageInput from "../../common/inputs/ImageInput/ImageInput";
 import Spinner from "../../common/Spinner/Spinner";
 
 import { isFormInvalid } from "../../../utils/helperFunctions";
-import {
-  BUTTON_ADD_IMAGE,
-  BUTTON_CHANGE_IMAGE,
-  INPUT_SUCCESS,
-} from "../../../utils/dutchMessages";
+import { BUTTON_ADD_IMAGE, INPUT_SUCCESS } from "../../../utils/dutchMessages";
 
 import CreateStore from "../../../store/createStore";
 import Store from "../../../store";
@@ -65,7 +61,6 @@ const ArticleForm = observer(() => {
           <ImageInput
             label="Header afbeelding"
             uploadTitle={BUTTON_ADD_IMAGE}
-            changeTitle={BUTTON_CHANGE_IMAGE}
             value={file}
             setValue={setFile}
           />

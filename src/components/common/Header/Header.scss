@@ -1,4 +1,5 @@
 @use "../../../assets/scss/variables.scss" as *;
+@use "../../../assets/scss/mixins.scss" as *;
 
 .header {
   position: relative;
@@ -16,12 +17,16 @@
   }
 
   &__bg-filter {
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.4);
-    // z-index: 1;
   }
 
   &__container {
     padding: 0 2.625rem;
+  }
+
+  &__toggle-button {
+    display: none;
   }
 
   &__upper {
@@ -103,6 +108,134 @@
     font-size: 3rem;
     text-align: center;
 
-    margin-top: 20px;
+    margin: 20px 0 0;
+  }
+  @include vp-tablet {
+    min-height: 180px;
+    padding-bottom: 20px;
+
+    &__heading {
+      font-size: 2rem;
+    }
+  }
+
+  @include vp-mobile {
+    min-height: auto;
+
+    background-color: $color-background-tertiary;
+    &__container {
+      padding: 0 1.5rem;
+    }
+
+    &__bg,
+    &__bg-filter {
+      display: none;
+    }
+
+    &__logo {
+      width: 100%;
+    }
+
+    &__nav {
+      display: none;
+    }
+
+    &__toggle-button {
+      display: block;
+
+      position: absolute;
+      right: 10px;
+      top: 10px;
+
+      width: 24px;
+      height: 24px;
+
+      background-color: transparent;
+      border: 0;
+      cursor: pointer;
+
+      z-index: 5;
+
+      &::after {
+        position: absolute;
+        top: 4px;
+        left: 2px;
+
+        width: 20px;
+        height: 3px;
+
+        background-color: $color-background-primary;
+        box-shadow: 0 6px 0 0 $color-background-primary,
+          0 12px 0 0 $color-background-primary;
+        content: "";
+      }
+    }
+
+    &--open {
+      & .header {
+        &__upper a {
+          z-index: 5;
+        }
+        &__logo {
+          z-index: 5;
+        }
+
+        &__toggle-button {
+          &::after {
+            box-shadow: none;
+            transform: rotate(-45deg);
+          }
+
+          &::before {
+            width: 20px;
+            height: 3px;
+            position: absolute;
+
+            left: 2px;
+
+            background-color: $color-background-primary;
+            content: "";
+            transform: rotate(45deg);
+          }
+
+          &::before,
+          &::after {
+            top: 10px;
+          }
+        }
+
+        &__nav {
+          display: block;
+          position: fixed;
+          left: 0;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          z-index: 2;
+
+          width: 100vw;
+          height: 100vh;
+
+          padding: 10rem 2rem 0;
+
+          background-color: $color-background-tertiary;
+        }
+
+        &__nav-list {
+          flex-direction: column;
+          justify-content: flex-start;
+          align-items: flex-start;
+        }
+
+        &__nav-item {
+          margin-left: 0;
+          margin-bottom: 1rem;
+        }
+
+        &__link {
+          font-size: 1.5rem;
+        }
+      }
+    }
   }
 }

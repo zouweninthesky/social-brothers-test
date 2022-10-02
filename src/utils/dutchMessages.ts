@@ -4,7 +4,6 @@ const INPUT_ERROR_IMAGE = "Let op! Graag afbeelding toevoegen.";
 const INPUT_ERROR_CONTENT = "Let op! Graag bericht toevoegen.";
 const INPUT_SUCCESS = "Goed zo! Je kan je bericht rechts bekijken.";
 const BUTTON_ADD_IMAGE = "Kies bestand";
-const BUTTON_CHANGE_IMAGE = "Wijzigen bestand";
 const FETCH_ERROR = "Er is een fout opgetreden. Probeer het later opnieuw.";
 
 export {
@@ -14,6 +13,5 @@ export {
   INPUT_ERROR_CONTENT,
   INPUT_SUCCESS,
   BUTTON_ADD_IMAGE,
-  BUTTON_CHANGE_IMAGE,
   FETCH_ERROR,
 };

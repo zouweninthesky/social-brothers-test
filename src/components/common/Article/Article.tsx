@@ -43,8 +43,8 @@ const Article: FC<ArticlePr> = ({
 
   const contentDate = () => {
     let d = new Date(date);
-    return `${d.getMonth().toString().padStart(2, "0")}-${d
-      .getDay()
+    return `${(d.getMonth() + 1).toString().padStart(2, "0")}-${d
+      .getDate()
       .toString()
       .padStart(2, "0")}-${d.getFullYear()}`;
   };

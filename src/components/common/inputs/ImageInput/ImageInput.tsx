@@ -6,14 +6,12 @@ interface ImageInputInt {
   label: string;
   value: null | { file: Blob; fileName: string };
   uploadTitle?: string;
-  changeTitle?: string;
   setValue: Function;
 }
 
 const ImageInput: FC<ImageInputInt> = ({
   label,
   uploadTitle = "Add image",
-  changeTitle = "Change image",
   value,
   setValue,
 }) => {
@@ -46,13 +44,14 @@ const ImageInput: FC<ImageInputInt> = ({
           6
         )}...`}</p>
         <button
-          className="input__remove-button"
+          className="input__icon-button input__icon-button--with-css-icon"
           onClick={() => {
             setValue(null);
           }}
         ></button>
+
         <button
-          className="input__upload-button"
+          className="input__icon-button"
           type="button"
           onClick={() => {
             if (fileInput !== null && fileInput.current !== null) {
@@ -60,7 +59,7 @@ const ImageInput: FC<ImageInputInt> = ({
             }
           }}
         >
-          {changeTitle}
+          <Icon id="restart" width={17} />
         </button>
       </>
     );

@@ -111,7 +111,7 @@ const Pagination = () => {
                 getPage(currentPage + 1);
               }}
             >
-              Volgende pagina
+              <span>Volgende pagina</span>
               <Icon id="arrow-right" width={14} />
             </button>
           )}

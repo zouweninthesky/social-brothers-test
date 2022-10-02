@@ -1,4 +1,5 @@
 @use "../../../assets/scss/variables.scss" as *;
+@use "../../../assets/scss/mixins.scss" as *;
 
 .article-form {
   max-width: 100%;
@@ -28,5 +29,9 @@
   &__success-message {
     color: $color-success;
     text-align: center;
+  }
+
+  @include vp-tablet {
+    margin-top: 2rem;
   }
 }

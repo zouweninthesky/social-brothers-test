@@ -14,13 +14,4 @@ const Home = () => {
   );
 };
 
-{
-  /* <main className="home"> */
-}
-{
-  /* <div className="home__container container"></div> */
-}
-// </div>
-// </main>
-
 export default Home;
