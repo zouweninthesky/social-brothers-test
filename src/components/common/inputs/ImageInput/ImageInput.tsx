@@ -1,4 +1,4 @@
-import React, { FC, useRef, ChangeEvent, useState } from "react";
+import React, { FC, useRef, ChangeEvent } from "react";
 
 import Icon from "../../../common/Icon/Icon";
 
@@ -17,37 +17,40 @@ const ImageInput: FC<ImageInputInt> = ({
   value,
   setValue,
 }) => {
-  // const [value, setValue] = useState<null | Blob>(null);
-
   const fileInput = useRef(null);
 
   const buttons = () => {
     if (!value) {
       return (
-        <button
-          className="input__upload-button"
-          type="button"
-          onClick={() => {
-            if (fileInput !== null && fileInput.current !== null) {
-              (fileInput.current as HTMLInputElement).click();
-            }
-          }}
-        >
-          {/* <Icon id="image" width="22" /> */}
-          {uploadTitle}
-        </button>
+        <>
+          <Icon id="camera" width={14} />
+
+          <button
+            className="input__upload-button"
+            type="button"
+            onClick={() => {
+              if (fileInput !== null && fileInput.current !== null) {
+                (fileInput.current as HTMLInputElement).click();
+              }
+            }}
+          >
+            {uploadTitle}
+          </button>
+        </>
       );
     }
     return (
       <>
+        <p className="input__name-preview">{`${value.fileName.slice(
+          0,
+          6
+        )}...`}</p>
         <button
           className="input__remove-button"
           onClick={() => {
             setValue(null);
           }}
-        >
-          remove
-        </button>
+        ></button>
         <button
           className="input__upload-button"
           type="button"
@@ -57,7 +60,6 @@ const ImageInput: FC<ImageInputInt> = ({
             }
           }}
         >
-          {/* <Icon id="cancel" width="24" /> */}
           {changeTitle}
         </button>
       </>
@@ -67,10 +69,7 @@ const ImageInput: FC<ImageInputInt> = ({
   return (
     <div className="input">
       <label htmlFor="form-img">{label}</label>
-      <div className="input__wrapper input__wrapper--short">
-        <Icon id="camera" width={14} />
-        {buttons()}
-      </div>
+      <div className="input__wrapper input__wrapper--short">{buttons()}</div>
       <input
         type="file"
         name=""
