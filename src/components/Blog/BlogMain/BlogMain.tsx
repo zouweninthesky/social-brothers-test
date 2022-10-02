@@ -6,9 +6,12 @@ import Article from "../../common/Article/Article";
 import Pagination from "../Pagination/Pagination";
 
 import BlogStore from "../../../store/blogStore";
+import Store from "../../../store";
+import Spinner from "../../common/Spinner/Spinner";
 
 const BlogMain = observer(() => {
   const { articles } = BlogStore;
+  const { loading } = Store;
 
   useEffect(() => {
     (async () => {
@@ -18,9 +21,25 @@ const BlogMain = observer(() => {
   }, []);
 
   const content = () => {
-    if (!articles) return <></>;
-    if (articles!.length !== 0) {
-      const articleItems = articles!.map((art, i) => {
+    let articleItems = [];
+    if (!articles) {
+      for (let i = 0; i < 8; i++) {
+        articleItems.push(
+          <li className="blog__item" key={i}>
+            <Article
+              heading={""}
+              content={""}
+              date={""}
+              category={""}
+              imgUrl={""}
+              isLoading={true}
+            />
+          </li>
+        );
+      }
+    }
+    if (articles && articles.length !== 0) {
+      articleItems = articles!.map((art, i) => {
         return (
           <li className="blog__item" key={art.id}>
             <Article
@@ -33,8 +52,8 @@ const BlogMain = observer(() => {
           </li>
         );
       });
-      return articleItems;
     }
+    return articleItems;
   };
 
   return (

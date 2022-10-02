@@ -272,11 +272,15 @@ a {
     bottom: 0;
     right: 0;
 
-    width: 30px;
-    height: 30px;
+    width: 24px;
+    height: 28px;
 
-    background-color: $color-background-tertiary;
+    background-color: $color-background-quaternary;
     pointer-events: none;
+  }
+
+  & svg {
+    color: $color-background-tertiary;
   }
 }
 

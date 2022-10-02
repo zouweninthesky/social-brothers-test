@@ -13,6 +13,13 @@
     margin-top: 0;
   }
 
+  &__spinner-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70%;
+  }
+
   &__error-message {
     color: $color-error;
     text-align: center;

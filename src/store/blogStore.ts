@@ -46,6 +46,7 @@ class BlogStore {
 
   async articlesLoad(isHome?: Boolean) {
     Store.loadingStarted();
+    this.articlesSet(null);
     const response = await BlogService.getPosts(
       this.currentPage,
       isHome ? ARTICLES_PER_PAGE_HOME : ARTICLES_PER_PAGE_BLOG

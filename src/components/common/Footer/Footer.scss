@@ -8,4 +8,11 @@
   padding: 0.5rem 0;
 
   background-color: $color-font-primary;
+
+  &__copyright {
+    position: relative;
+    top: 3px;
+    font-size: 1.25rem;
+    margin-right: 10px;
+  }
 }

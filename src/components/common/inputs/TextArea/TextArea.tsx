@@ -1,5 +1,7 @@
 import React, { FC } from "react";
 
+import Icon from "../../Icon/Icon";
+
 interface TextAreaInt {
   label: string;
   value: string;
@@ -16,7 +18,9 @@ const TextArea: FC<TextAreaInt> = ({ label, value, onInput }) => {
         onInput={(e) => onInput((e.target as HTMLTextAreaElement).value)}
         value={value}
       ></textarea>
-      <div className="input__resize-sub"></div>
+      <div className="input__resize-sub">
+        <Icon id="drag" width={14} />
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React, { FC, useRef, ChangeEvent, useState } from "react";
+import Icon from "../../../common/Icon/Icon";
 
 interface ImageInputInt {
   label: string;
@@ -59,7 +60,8 @@ const ImageInput: FC<ImageInputInt> = ({
     <div className="input">
       <label htmlFor="form-img">{label}</label>
       <div className="input__wrapper input__wrapper--short">
-        <p className="input__temp-icon">temp</p>
+        {/* <p className="input__temp-icon">temp</p> */}
+        <Icon id="camera" width={14} />
         {buttons()}
       </div>
       <input

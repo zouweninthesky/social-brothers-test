@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import "./Article.scss";
 
+import Spinner from "../Spinner/Spinner";
+
 import { MAIN_API_URL } from "../../../utils/links";
 
 interface ArticlePr {
@@ -9,6 +11,7 @@ interface ArticlePr {
   date: string;
   category: string;
   imgUrl: string;
+  isLoading?: boolean;
 }
 
 const Article: FC<ArticlePr> = ({
@@ -17,7 +20,20 @@ const Article: FC<ArticlePr> = ({
   date,
   category,
   imgUrl,
+  isLoading,
 }) => {
+  if (isLoading)
+    return (
+      <article className="article">
+        <div className="article__header article__header--empty">
+          <Spinner width={40} />
+        </div>
+        <div className="article__body article__body--empty">
+          <Spinner width={40} />
+        </div>
+      </article>
+    );
+
   const contentText = () => {
     if (!content.includes(" "))
       return content.length > 24 ? `${content.slice(0, 22)}...` : content;

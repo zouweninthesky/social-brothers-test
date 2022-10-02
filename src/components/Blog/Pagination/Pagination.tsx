@@ -2,6 +2,8 @@ import React from "react";
 import { observer } from "mobx-react-lite";
 import "./Pagination.scss";
 
+import Icon from "../../common/Icon/Icon";
+
 import blogStore from "../../../store/blogStore";
 
 const Pagination = () => {
@@ -110,6 +112,7 @@ const Pagination = () => {
               }}
             >
               Volgende pagina
+              <Icon id="arrow-right" width={14} />
             </button>
           )}
         </li>

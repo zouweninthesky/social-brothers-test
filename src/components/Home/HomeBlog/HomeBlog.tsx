@@ -18,9 +18,25 @@ const HomeBlog = observer(() => {
   }, []);
 
   const content = () => {
-    if (!articles) return <></>;
-    if (articles!.length !== 0) {
-      const articleItems = articles!.map((art, i) => {
+    let articleItems = [];
+    if (!articles) {
+      for (let i = 0; i < 4; i++) {
+        articleItems.push(
+          <li className="blog__item" key={i}>
+            <Article
+              heading={""}
+              content={""}
+              date={""}
+              category={""}
+              imgUrl={""}
+              isLoading={true}
+            />
+          </li>
+        );
+      }
+    }
+    if (articles && articles.length !== 0) {
+      articleItems = articles!.map((art, i) => {
         return (
           <li className="blog__item" key={art.id}>
             <Article
@@ -33,8 +49,8 @@ const HomeBlog = observer(() => {
           </li>
         );
       });
-      return articleItems;
     }
+    return articleItems;
   };
 
   const onClick = () => {

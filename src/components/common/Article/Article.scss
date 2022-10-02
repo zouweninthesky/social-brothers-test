@@ -17,6 +17,12 @@
     padding: 8px 16px;
 
     overflow: hidden;
+
+    &--empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__img {
@@ -43,6 +49,12 @@
 
   &__body {
     padding: 1.25rem 1rem;
+
+    &--empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 
   &__heading {

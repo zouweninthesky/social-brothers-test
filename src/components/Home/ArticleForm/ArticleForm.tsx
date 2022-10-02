@@ -7,6 +7,7 @@ import Dropdown from "../../common/inputs/Dropdown/Dropdown";
 import TextArea from "../../common/inputs/TextArea/TextArea";
 import Button from "../../common/Button/Button";
 import ImageInput from "../../common/inputs/ImageInput/ImageInput";
+import Spinner from "../../common/Spinner/Spinner";
 
 import { isFormInvalid } from "../../../utils/helperFunctions";
 
@@ -15,6 +16,7 @@ import Store from "../../../store";
 
 const ArticleForm = observer(() => {
   const { categories } = CreateStore;
+  const { loading } = Store;
   const [title, setTitle] = useState("");
   const [categoryID, setCategoryId] = useState(0);
   const [file, setFile] = useState<null | {
@@ -29,56 +31,63 @@ const ArticleForm = observer(() => {
     (async () => {
       CreateStore.reset();
       CreateStore.getCategories();
+      Store.loadingStarted();
     })();
   }, []);
   return (
     <section className="article-form">
       <h3 className="article-form__header">Plaats een blog bericht</h3>
-      <form action="" className="article-form__form">
-        <TextInput
-          label="Berichtnaam"
-          placeholder="Geen titel"
-          value={title}
-          onInput={setTitle}
-        />
-        {categories && (
-          <Dropdown
-            label="Categorie"
-            options={categories}
-            onChange={setCategoryId}
+      {!categories && loading ? (
+        <div className="article-form__spinner-wrapper">
+          <Spinner width={160} />
+        </div>
+      ) : (
+        <form action="" className="article-form__form">
+          <TextInput
+            label="Berichtnaam"
+            placeholder="Geen titel"
+            value={title}
+            onInput={setTitle}
           />
-        )}
-        <ImageInput label="Header afdbeelding" onChange={setFile} />
-        <TextArea label="Bericht" value={content} onInput={setContent} />
-        <Button
-          title="Bericht aanmaken"
-          onClick={async () => {
-            setError("");
-            const error = isFormInvalid(title, categoryID, file, content);
-            if (error === "" && file !== null) {
-              const isSuccessful = await CreateStore.createPost(
-                title,
-                content,
-                categoryID,
-                file
-              );
-              if (isSuccessful) {
-                setSuccess(true);
+          {categories && (
+            <Dropdown
+              label="Categorie"
+              options={categories}
+              onChange={setCategoryId}
+            />
+          )}
+          <ImageInput label="Header afdbeelding" onChange={setFile} />
+          <TextArea label="Bericht" value={content} onInput={setContent} />
+          <Button
+            title="Bericht aanmaken"
+            onClick={async () => {
+              setError("");
+              const error = isFormInvalid(title, categoryID, file, content);
+              if (error === "" && file !== null) {
+                const isSuccessful = await CreateStore.createPost(
+                  title,
+                  content,
+                  categoryID,
+                  file
+                );
+                if (isSuccessful) {
+                  setSuccess(true);
+                } else {
+                  Store.errorOccured();
+                }
               } else {
-                Store.errorOccured();
+                setError(error);
               }
-            } else {
-              setError(error);
-            }
-          }}
-        />
-        {error && <p className="article-form__error-message">{error}</p>}
-        {success && (
-          <p className="article-form__success-message">
-            Goed zo! Uw bericht wordt aan de rechterkant weergegeven.
-          </p>
-        )}
-      </form>
+            }}
+          />
+          {error && <p className="article-form__error-message">{error}</p>}
+          {success && (
+            <p className="article-form__success-message">
+              Goed zo! Uw bericht wordt aan de rechterkant weergegeven.
+            </p>
+          )}
+        </form>
+      )}
     </section>
   );
 });
