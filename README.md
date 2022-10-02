@@ -7,7 +7,7 @@ Create SPA with React.
 
 ## How to try
 
-To install the app you will require [git](https://git-scm.com/downloads), [node.js](https://nodejs.org/en/) и [npm](https://www.npmjs.com/).\
+To install the app you need [git](https://git-scm.com/downloads), [node.js](https://nodejs.org/en/) и [npm](https://www.npmjs.com/).\
 Once you have them, create a folder where it's convenient for you and open it with the terminal ("Command Line Interface" in Windows).\
 Once there, enter this command: `git clone git@github.com:zouweninthesky/social-brothers-test.git`.\
 When the project will load, get deeper, into the project folder with `cd social-brothers-test` and type in `npm i` to install the packages required to run the app.\
