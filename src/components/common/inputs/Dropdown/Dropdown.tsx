@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState, useRef } from "react";
 
 import { BlogCategoryInt } from "../../../../utils/interfaces";
 
@@ -15,15 +15,38 @@ const Dropdown: FC<DropdownInt> = ({ label, options, onChange }) => {
   const [option, setOption] = useState<null | { id: number; name: string }>(
     null
   );
+  const inputRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggling = () => setIsOpen(!isOpen);
+  const handleClick = () => {
+    const handler = (e: Event) => {
+      if (
+        !inputRef.current ||
+        (inputRef.current && inputRef.current!.contains(e.target as Node))
+      ) {
+        return;
+      }
+
+      document.removeEventListener("mousedown", handler);
+      setIsOpen(false);
+    };
+
+    if (!isOpen) {
+      setIsOpen(true);
+      document.addEventListener("mousedown", handler);
+    }
+
+    if (isOpen) {
+      setIsOpen(false);
+      document.removeEventListener("mousedown", handler);
+    }
+  };
 
   const onOptionClicked = (id: number) => {
     const [option] = options.filter((opt, i) => opt.id === id);
     setOption(option);
     onChange(option.id);
-    toggling();
+    handleClick();
   };
 
   const headerClass = () => {
@@ -37,9 +60,9 @@ const Dropdown: FC<DropdownInt> = ({ label, options, onChange }) => {
   };
 
   return (
-    <div className="input">
+    <div className="input" ref={inputRef}>
       <label htmlFor="">{label}</label>
-      <div className="input__wrapper" onClick={toggling}>
+      <div className="input__wrapper" onClick={handleClick}>
         <button type="button" className={headerClass()}>
           {option ? option.name : "Geen categorie"}
         </button>
