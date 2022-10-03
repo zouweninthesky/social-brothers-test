@@ -29,11 +29,7 @@ const fetchHandler = async (
     if (!response.ok) {
       throw new Error(response.statusText);
     }
-    if (dataRequired) {
-      responseResult = await response.json();
-    } else {
-      responseResult = true;
-    }
+    responseResult = dataRequired ? await response.json() : true;
   } catch (e) {
     responseResult = null;
   } finally {

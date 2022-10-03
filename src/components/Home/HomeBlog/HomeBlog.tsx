@@ -69,7 +69,7 @@ const HomeBlog = observer(() => {
           <Spinner width={40} />
         </div>
       ) : (
-        <Button title="Meer laden" onClick={onClick} />
+        <Button title="Meer laden" handleClick={onClick} />
       )}
     </section>
   );

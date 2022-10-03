@@ -67,7 +67,7 @@ const ArticleForm = observer(() => {
           <TextArea label="Bericht" value={content} onInput={setContent} />
           <Button
             title="Bericht aanmaken"
-            onClick={async () => {
+            handleClick={async () => {
               setError("");
               const error = isFormInvalid(title, categoryID.id, file, content);
               if (error === "" && file !== null) {

@@ -1,4 +1,5 @@
 @use "../../../assets/scss/variables.scss" as *;
+@use "../../../assets/scss/mixins.scss" as *;
 
 .button {
   display: flex;
@@ -21,4 +22,8 @@
   cursor: pointer;
   border-radius: 1.125rem;
   background-color: $color-accent;
+
+  @include transition-normal;
+
+  @include interaction-effect-normal;
 }

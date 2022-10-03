@@ -197,10 +197,19 @@ a {
     border: 0;
     background-color: $color-background-quaternary;
     resize: vertical;
+  }
 
+  & input,
+  & textarea,
+  &__dropdown-option {
+    &:hover,
+    &:active,
     &:focus {
+      @include shadow-normal;
       outline: none;
     }
+
+    @include transition-normal;
   }
 
   &__dropdown-option {
@@ -246,6 +255,12 @@ a {
     &--empty {
       font-style: italic;
     }
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $color-font-tertiary;
+    }
   }
 
   input[type="file"] {
@@ -278,6 +293,10 @@ a {
     border-radius: 1.125rem;
 
     cursor: pointer;
+
+    @include transition-normal;
+
+    @include interaction-effect-normal;
   }
 
   &__icon-button {
@@ -297,6 +316,10 @@ a {
     border: 0;
     background-color: transparent;
     cursor: pointer;
+
+    @include transition-normal;
+
+    @include interaction-effect-normal;
 
     & svg {
       margin-left: 0;

@@ -2,11 +2,11 @@
 @use "../../../assets/scss/mixins.scss" as *;
 
 .home-blog {
+  max-height: 41.1875rem;
+
   padding: 1.5rem;
 
   background-color: $color-background-primary;
-
-  max-height: 41.1875rem;
   overflow-y: auto;
 
   &__list {
