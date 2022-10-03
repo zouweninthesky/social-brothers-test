@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import "./BlogMain.scss";
 
 import Article from "../../common/Article/Article";
-import Pagination from "../Pagination/Pagination";
+import BlogPagination from "../BlogPagination/BlogPagination";
 
 import BlogStore from "../../../store/blogStore";
 
@@ -56,7 +56,7 @@ const BlogMain = observer(() => {
   return (
     <div className="blog">
       <ul className="blog__list">{content()}</ul>
-      <Pagination />
+      <BlogPagination />
     </div>
   );
 });

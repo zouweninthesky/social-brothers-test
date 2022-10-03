@@ -1,19 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 import { observer } from "mobx-react-lite";
 import "./Pagination.scss";
 
 import Icon from "../../common/Icon/Icon";
 
-import blogStore from "../../../store/blogStore";
+interface PaginationInt {
+  currentPage: number;
+  totalPages: number;
+  handleClick: Function;
+}
 
-const Pagination = () => {
-  const { currentPage, totalPages } = blogStore;
-
-  const getPage = (pageNumber: number) => {
-    blogStore.currentPageSet(pageNumber);
-    blogStore.articlesLoad();
-  };
-
+const Pagination: FC<PaginationInt> = ({
+  currentPage,
+  totalPages,
+  handleClick,
+}) => {
   const createLink = (i: number) => {
     return (
       <li key={i} className="pagination__item">
@@ -27,7 +28,7 @@ const Pagination = () => {
         ) : (
           <button
             onClick={() => {
-              getPage(i);
+              handleClick(i);
             }}
             className="pagination__link"
           >
@@ -108,7 +109,7 @@ const Pagination = () => {
             <button
               className="pagination__button"
               onClick={() => {
-                getPage(currentPage + 1);
+                handleClick(currentPage + 1);
               }}
             >
               <span>Volgende pagina</span>
