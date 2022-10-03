@@ -16,7 +16,7 @@ const Spinner: FC<SpinnerInt> = ({ width }) => {
   }, [width]);
 
   return (
-    <div className="lds-ring" style={{ width: width }}>
+    <div className="spinner" style={{ width: width }}>
       <div style={piecesStyle}></div>
       <div style={piecesStyle}></div>
       <div style={piecesStyle}></div>

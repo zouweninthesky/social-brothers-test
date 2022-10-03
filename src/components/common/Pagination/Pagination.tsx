@@ -1,5 +1,4 @@
 import React, { FC } from "react";
-import { observer } from "mobx-react-lite";
 import "./Pagination.scss";
 
 import Icon from "../../common/Icon/Icon";

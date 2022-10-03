@@ -1,7 +1,5 @@
 import React, { FC, useState, useRef } from "react";
 
-import { BlogCategoryInt } from "../../../../utils/interfaces";
-
 interface DropdownInt {
   label: string;
   options: {
@@ -43,7 +41,6 @@ const Dropdown: FC<DropdownInt> = ({ label, options, value, setValue }) => {
   const onOptionClicked = (id: number) => {
     const [option] = options.filter((opt, i) => opt.id === id);
     setValue(option);
-    // onChange(option.id);
     handleClick();
   };
 

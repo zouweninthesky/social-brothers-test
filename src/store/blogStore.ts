@@ -1,12 +1,13 @@
 import { action, makeObservable, observable } from "mobx";
 
 import BlogService from "../api/BlogService";
+
 import {
   ARTICLES_PER_PAGE_BLOG,
   ARTICLES_PER_PAGE_HOME,
-  // ARTICLES_PER_PAGE_HOME,
 } from "../utils/constants";
 import { BlogArticleInt } from "../utils/interfaces";
+
 import Store from "./index";
 
 class BlogStore {

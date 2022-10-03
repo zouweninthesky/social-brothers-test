@@ -2,14 +2,14 @@ import React from "react";
 
 import Pagination from "../../common/Pagination/Pagination";
 
-import blogStore from "../../../store/blogStore";
+import BlogStore from "../../../store/blogStore";
 
 const BlogPagination = () => {
-  const { currentPage, totalPages } = blogStore;
+  const { currentPage, totalPages } = BlogStore;
 
   const getPage = (pageNumber: number) => {
-    blogStore.currentPageSet(pageNumber);
-    blogStore.articlesLoad();
+    BlogStore.currentPageSet(pageNumber);
+    BlogStore.articlesLoad();
   };
 
   return (

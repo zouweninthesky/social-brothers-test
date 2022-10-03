@@ -4,6 +4,7 @@ import "./Header.scss";
 
 import BackgroundImg from "../../../assets/img/background.png";
 import Icon from "../Icon/Icon";
+
 import { toggleScrollDisable } from "../../../utils/helperFunctions";
 
 interface HeaderPr {

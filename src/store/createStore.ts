@@ -1,9 +1,10 @@
 import { makeObservable, observable, action } from "mobx";
 
-import Store from ".";
-import { BlogCategoryInt } from "../utils/interfaces";
 import BlogService from "../api/BlogService";
-import { MAIN_API_URL } from "../utils/links";
+
+import { BlogCategoryInt } from "../utils/interfaces";
+
+import Store from ".";
 import BlogStore from "./blogStore";
 
 class CreateStore {
@@ -16,7 +17,6 @@ class CreateStore {
     });
   }
 
-  // resetStore
   reset() {
     this.setCategories([]);
   }

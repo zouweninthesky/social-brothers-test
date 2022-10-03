@@ -3,16 +3,16 @@ import "./Button.scss";
 
 interface ButtonInt {
   title: string;
-  onClick: Function;
+  handleClick: Function;
 }
 
-const Button: FC<ButtonInt> = ({ title, onClick }) => {
+const Button: FC<ButtonInt> = ({ title, handleClick }) => {
   return (
     <button
       type="button"
       className="button"
       onClick={() => {
-        onClick();
+        handleClick();
       }}
     >
       {title}
