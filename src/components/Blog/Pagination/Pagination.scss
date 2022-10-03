@@ -44,6 +44,15 @@
       border-radius: 50%;
       background-color: $color-background-quaternary;
     }
+
+    @include transition-normal;
+
+    @include interaction-effect-normal;
+
+    &:disabled {
+      color: $color-font-primary;
+      cursor: auto;
+    }
   }
 
   &__button {
@@ -63,6 +72,10 @@
       top: 0.25rem;
       margin-left: 0.5rem;
     }
+
+    @include transition-normal;
+
+    @include interaction-effect-normal;
   }
 
   @include vp-mobile {

@@ -103,6 +103,12 @@
     }
   }
 
+  & a svg {
+    @include transition-normal;
+
+    @include interaction-effect-normal;
+  }
+
   &__heading {
     color: $color-background-primary;
     font-size: 3rem;
@@ -155,6 +161,9 @@
       cursor: pointer;
 
       z-index: 5;
+      @include transition-normal;
+
+      @include interaction-effect-normal;
 
       &::after {
         position: absolute;

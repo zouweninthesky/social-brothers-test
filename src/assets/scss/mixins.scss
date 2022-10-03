@@ -11,3 +11,20 @@
     @content;
   }
 }
+
+@mixin transition-normal {
+  transition-duration: 300ms;
+}
+
+@mixin interaction-effect-normal {
+  &:hover,
+  &:active,
+  &:focus {
+    opacity: 0.6;
+    outline: none;
+  }
+}
+
+@mixin shadow-normal {
+  box-shadow: 0 0 0.625rem 0 rgba(0, 0, 0, 0.1);
+}
